@@ -4,9 +4,29 @@
     height: 100vh;
     background: lightblue;
     position: relative;
+    overflow: hidden;
 }
 .createdDiv{
     position: absolute;
+    overflow: hidden;
+}
+.createdDivTopPanel{
+    height: 10px;
+    width:100%;
+    background: #bbb;
+}
+.createdDivTopPanel:hover{
+    cursor: move;
+}
+.createdDivBottomPanel{
+    position: absolute;
+    bottom:0px;
+    height: 2px;
+    width:100%;
+    background: #999;
+}
+.createdDivBottomPanel:hover{
+    cursor: ns-resize;
 }
 
 

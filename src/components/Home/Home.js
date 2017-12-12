@@ -15,12 +15,25 @@ class Home extends Component {
           left:"200px",
           top:"100px"
         },
+        {
+          height:"100px",
+          width:"50px",
+          background:"black",
+          left:"500px",
+          top:"200px"
+        },
+        {
+          height:"300px",
+          width:"500px",
+          background:"white",
+          left:"600px",
+          top:"800px"
+        },
       ],
-      x:null,
-      y:null,
       newX:null,
       newY:null,
-      moveActive:false
+      elementIndex:null,
+      moveActive:false,
 
     }
     //bind shit here
@@ -29,13 +42,10 @@ class Home extends Component {
     this.resetMoveActive = this.resetMoveActive.bind(this);
   }
 
-  moveTheDiv(evt){
-    let x = evt.clientX;
-    let y = evt.clientY;
+  moveTheDiv(el){
     this.setState({
-      x:x,
-      y:y,
-      moveActive:true
+      moveActive:true,
+      elementIndex:el
     })
   }
 
@@ -53,11 +63,12 @@ class Home extends Component {
   }
 
   updateLocation(){
-    let top = this.state.newY;
-    let left = this.state.newX;
-    let style = this.state.testStyle;
-    style[0].left = JSON.stringify(left);
-    style[0].top = JSON.stringify(top);
+    let newState = this.state;
+    let top = newState.newY;
+    let left = newState.newX;
+    let style = newState.testStyle;
+    style[this.state.elementIndex].left = JSON.stringify(left) + "px";
+    style[this.state.elementIndex].top = JSON.stringify(top) + "px";
     this.setState({
       testStyle:style
     })
@@ -65,43 +76,35 @@ class Home extends Component {
 
   resetMoveActive(){
     this.setState({
-      moveActive:false
+      moveActive:false,
+      elementIndex:null
     })
   }
 
   render() {
     console.log('rendered')
-    let testStyle = {
-      "height":this.state.testStyle[0].height,
-      "width":this.state.testStyle[0].width,
-      "background":this.state.testStyle[0].background,
-      "left":this.state.testStyle[0].left,
-      "top":this.state.testStyle[0].top
-    }
-    // let moveTheDiv = function(){
-    //   console.log();
-    //   return {
-    //     startMoving: function(){
-    //       console.log()
-    //       // let mouseDownX = e.clientX;
-    //       // let mouseDownY = e.clientY;
-    //       // let mouseUpX;
-    //       // let mouseUpY;
-
-    //       document.onmousemove = function(e){
-    //         console.log()
-    //       }
-
-    //     }
-
-    //   }
-
-    // }();
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
 
-        <div onMouseDown={this.moveTheDiv}  style={this.state.testStyle[0]} className="createdDiv"></div>
+        <div style={{...this.state.testStyle[0]}} className="createdDiv">
+          <div onMouseDown={() => this.moveTheDiv(0)} className="createdDivTopPanel"></div>
+          <div className="createdDivBottomPanel"></div>
+          <div className="createdDivRightPanel"></div>
+          <div className="createdDivLeftPanel"></div>
+        </div>
+        <div style={{...this.state.testStyle[1]}} className="createdDiv">
+          <div onMouseDown={() => this.moveTheDiv(1)} className="createdDivTopPanel"></div>
+          <div className="createdDivBottomPanel"></div>
+          <div className="createdDivRightPanel"></div>
+          <div className="createdDivLeftPanel"></div>
+        </div>
+        <div style={{...this.state.testStyle[2]}} className="createdDiv">
+          <div onMouseDown={() => this.moveTheDiv(2)} className="createdDivTopPanel"></div>
+          <div className="createdDivBottomPanel"></div>
+          <div className="createdDivRightPanel"></div>
+          <div className="createdDivLeftPanel"></div>
+        </div>
         <h1>{this.state.x} {this.state.y}</h1>
         <h1>{this.state.newX} {this.state.newY}</h1>
       </div>
