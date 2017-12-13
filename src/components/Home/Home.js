@@ -51,9 +51,7 @@ class Home extends Component {
       moveActive:false,
       expandActive:false,
       expandSide:null,
-      availableAppsDropDownStyle:{
-        height:"500px"
-      }
+      showCreateAppDropDown:false,
 
     }
     //bind shit here
@@ -63,6 +61,7 @@ class Home extends Component {
     this.markXY = this.markXY.bind(this);
     this.updateHeight = this.updateHeight.bind(this);
     this.bringToFront = this.bringToFront.bind(this);
+    this.createNewApp = this.createNewApp.bind(this);
   }
 
   markXY(e, el, side){
@@ -160,6 +159,27 @@ class Home extends Component {
     this.setState({activeApps:apps});
   }
 
+  toggleAvailableAppsDropDown(){
+    let x = !this.state.showCreateAppDropDown;
+    this.setState({showCreateAppDropDown:x});
+  }
+
+  createNewApp(type){
+    let activeApps = this.state.activeApps;
+    activeApps.push({
+      appType:type,
+      style:{
+        height:"200px",
+        width:"500px",
+        background:"white",
+        left:"800px",
+        top:"500px",
+        zIndex:"1"
+      }
+    });
+    this.setState({activeApps:activeApps});
+  }
+
   render() {
     let activeApps;
     if (this.state.activeApps.length) {
@@ -175,12 +195,16 @@ class Home extends Component {
         )
       })
     }
+    let createAppDropDownStyle = this.state.showCreateAppDropDown?{height:"500px"}:{height:"0px",border:"none"};
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
-        <h1 className="addAnAppButton">App++</h1>
-        <div className="availableAppsDropDown" style={this.state.availableAppsDropDownStyle}></div>
-
+        <h1 onClick={this.toggleAvailableAppsDropDown.bind(this)} className="addAnAppButton">App++</h1>
+        <div className="availableAppsDropDown" style={createAppDropDownStyle}>
+          <h1 onClick={() => this.createNewApp("Alarm Clock")}>New Alarm Clock</h1>
+          <h1 onClick={() => this.createNewApp("Calendar")}>New Calendar</h1>
+          <h1 onClick={() => this.createNewApp("Note Pad")}>New Note Pad</h1>
+        </div>
         {activeApps}
       </div>
     );

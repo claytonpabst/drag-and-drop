@@ -51,7 +51,7 @@
 }
 .addAnAppButton{
     background: #999;
-    margin: 20px;
+    margin: 20px 0 0 20px;
     /*height: 40px;*/
     width: fit-content;
     padding: 20px;
@@ -60,8 +60,12 @@
     cursor: pointer;
 }
 .availableAppsDropDown{
-    width: 200px;
+    width: 240px;
     transition: all .5s;
+    background: #777;
+    margin-left: 20px;
+    border: 1px solid black;
+    overflow: hidden;
 }
 
 
