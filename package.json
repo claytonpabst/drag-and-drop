@@ -1,8 +1,9 @@
 {
-  "name": "react-seed-basic",
+  "name": "drag-and-drop-showcase",
   "version": "0.1.0",
   "main": "server/index.js",
   "private": true,
+  "author": "Clayton Pabst",
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
