@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import AlarmClock from './AlarmClock.js';
 
 import './Home.css';
 
@@ -7,6 +8,19 @@ class Home extends Component {
   constructor(props){
     super(props)
     this.state = {
+      activeApps:[
+        {
+          appType:"Alarm Clock",
+          style:{
+            height:"100px",
+            width:"50px",
+            background:"black",
+            left:"200px",
+            top:"100px",
+            zIndex:"1"
+          }
+        }
+      ],
       testStyle:[
         {
           height:"100px",
@@ -32,6 +46,14 @@ class Home extends Component {
           top:"800px",
           zIndex:"1"
         },
+        {
+          height:"300px",
+          width:"500px",
+          background:"white",
+          left:"600px",
+          top:"100px",
+          zIndex:"1"
+        },
       ],
       oldX:null,
       oldY:null,
@@ -49,6 +71,7 @@ class Home extends Component {
     this.resetMoveActive = this.resetMoveActive.bind(this);
     this.markXY = this.markXY.bind(this);
     this.updateHeight = this.updateHeight.bind(this);
+    this.bringToFront = this.bringToFront.bind(this);
   }
 
   markXY(e, el, side){
@@ -96,16 +119,16 @@ class Home extends Component {
     let style = this.state.testStyle
     switch(this.state.expandSide){
       case "bottom":
-        style[elementIndex].height = JSON.stringify((parseInt(height, radix) + yMovement)) + "px";
+        style[elementIndex].height = JSON.stringify((parseInt(height, 10) + yMovement)) + "px";
         this.setState({testStyle:style, oldX:newX, oldY:newY})
         break;
       case "right":
-        style[elementIndex].width = JSON.stringify((parseInt(width, radix) + xMovement)) + "px";
+        style[elementIndex].width = JSON.stringify((parseInt(width, 10) + xMovement)) + "px";
         this.setState({testStyle:style, oldX:newX, oldY:newY})
         break;
       case "left":
-        style[elementIndex].width = JSON.stringify((parseInt(width, radix) - xMovement)) + "px";
-        style[elementIndex].left = JSON.stringify((parseInt(left, radix) + xMovement)) + "px";
+        style[elementIndex].width = JSON.stringify((parseInt(width, 10) - xMovement)) + "px";
+        style[elementIndex].left = JSON.stringify((parseInt(left, 10) + xMovement)) + "px";
         this.setState({testStyle:style, oldX:newX, oldY:newY})
         break;
       default:
@@ -120,8 +143,8 @@ class Home extends Component {
     let style = newState.testStyle;
     let xMovement = this.state.newX - this.state.oldX;
     let yMovement = this.state.newY - this.state.oldY;
-    style[this.state.elementIndex].left = JSON.stringify((parseInt(left, radix) + xMovement)) + "px";
-    style[this.state.elementIndex].top = JSON.stringify((parseInt(top, radix) + yMovement)) + "px";
+    style[this.state.elementIndex].left = JSON.stringify((parseInt(left, 10) + xMovement)) + "px";
+    style[this.state.elementIndex].top = JSON.stringify((parseInt(top, 10) + yMovement)) + "px";
     this.setState({testStyle:style, oldX:this.state.newX, oldY:this.state.newY})
   }
 
@@ -151,7 +174,6 @@ class Home extends Component {
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
-
         <div onMouseDown={() => this.bringToFront(0)} style={{...this.state.testStyle[0]}} className="createdDiv">
           <div onMouseDown={(e) => this.moveTheDiv(e, 0)} className="createdDivTopPanel"></div>
           <div onMouseDown={(e) => this.markXY(e, 0, "bottom")} className="createdDivBottomPanel"></div>
@@ -170,6 +192,13 @@ class Home extends Component {
           <div onMouseDown={(e) => this.markXY(e, 2, "right")} className="createdDivRightPanel"></div>
           <div onMouseDown={(e) => this.markXY(e, 2, "left")} className="createdDivLeftPanel"></div>
         </div>
+        <AlarmClock style={this.state.testStyle[3]} 
+                    bringToFront={this.bringToFront}
+                    moveTheDiv={this.moveTheDiv}
+                    markXY={this.markXY}
+                    elementIndex={3}
+                    app={"Alarm Clock"}
+        />
         <h1>{this.state.oldX} {this.state.oldY}</h1>
         <h1>{this.state.newX} {this.state.newY}</h1>
       </div>
