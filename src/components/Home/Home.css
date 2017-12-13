@@ -11,7 +11,7 @@
     overflow: hidden;
 }
 .createdDivTopPanel{
-    height: 10px;
+    height: 20px;
     width:100%;
     background: #bbb;
 }
@@ -27,6 +27,26 @@
 }
 .createdDivBottomPanel:hover{
     cursor: ns-resize;
+}
+.createdDivRightPanel{
+    position: absolute;
+    right:0px;
+    height:100%;
+    width:2px;
+    background: #999;
+}
+.createdDivRightPanel:hover{
+    cursor: ew-resize;
+}
+.createdDivLeftPanel{
+    position: absolute;
+    left:0px;
+    height:100%;
+    width:2px;
+    background: #999;
+}
+.createdDivLeftPanel:hover{
+    cursor: ew-resize;
 }
 
 
