@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AlarmClock from './AlarmClock.js';
+import ActiveApp from './ActiveApp.js';
 
 import './Home.css';
 
@@ -19,40 +19,28 @@ class Home extends Component {
             top:"100px",
             zIndex:"1"
           }
-        }
-      ],
-      testStyle:[
-        {
-          height:"100px",
-          width:"50px",
-          background:"black",
-          left:"200px",
-          top:"100px",
-          zIndex:"1"
         },
         {
-          height:"100px",
-          width:"50px",
-          background:"black",
-          left:"500px",
-          top:"200px",
-          zIndex:"1"
+          appType:"Note Pad",
+          style:{
+            height:"200px",
+            width:"500px",
+            background:"white",
+            left:"600px",
+            top:"300px",
+            zIndex:"1"
+          }
         },
         {
-          height:"300px",
-          width:"500px",
-          background:"white",
-          left:"600px",
-          top:"800px",
-          zIndex:"1"
-        },
-        {
-          height:"300px",
-          width:"500px",
-          background:"white",
-          left:"600px",
-          top:"100px",
-          zIndex:"1"
+          appType:"Calander",
+          style:{
+            height:"200px",
+            width:"500px",
+            background:"white",
+            left:"800px",
+            top:"500px",
+            zIndex:"1"
+          }
         },
       ],
       oldX:null,
@@ -170,37 +158,24 @@ class Home extends Component {
   }
 
   render() {
-    console.log('rendered')
+    let activeApps;
+    if (this.state.activeApps.length) {
+      activeApps = this.state.activeApps.map((app, i) => {
+        return (
+          <ActiveApp style={this.state.activeApps[i].style} 
+                      bringToFront={this.bringToFront}
+                      moveTheDiv={this.moveTheDiv}
+                      markXY={this.markXY}
+                      elementIndex={i}
+                      appType={this.state.activeApps[i].appType}
+          />
+        )
+      })
+    }
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
-        {/*<div onMouseDown={() => this.bringToFront(0)} style={{...this.state.testStyle[0]}} className="createdDiv">
-          <div onMouseDown={(e) => this.moveTheDiv(e, 0)} className="createdDivTopPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 0, "bottom")} className="createdDivBottomPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 0, "right")} className="createdDivRightPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 0, "left")} className="createdDivLeftPanel"></div>
-        </div>
-        <div onMouseDown={() => this.bringToFront(1)} style={{...this.state.testStyle[1]}} className="createdDiv">
-          <div onMouseDown={(e) => this.moveTheDiv(e, 1)} className="createdDivTopPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 1, "bottom")} className="createdDivBottomPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 1, "right")} className="createdDivRightPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 1, "left")} className="createdDivLeftPanel"></div>
-        </div>
-        <div onMouseDown={() => this.bringToFront(2)} style={{...this.state.testStyle[2]}} className="createdDiv">
-          <div onMouseDown={(e) => this.moveTheDiv(e, 2)} className="createdDivTopPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 2, "bottom")} className="createdDivBottomPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 2, "right")} className="createdDivRightPanel"></div>
-          <div onMouseDown={(e) => this.markXY(e, 2, "left")} className="createdDivLeftPanel"></div>
-        </div>*/}
-        <AlarmClock style={this.state.activeApps[0].style} 
-                    bringToFront={this.bringToFront}
-                    moveTheDiv={this.moveTheDiv}
-                    markXY={this.markXY}
-                    elementIndex={0}
-                    app={"Alarm Clock"}
-        />
-        <h1>{this.state.oldX} {this.state.oldY}</h1>
-        <h1>{this.state.newX} {this.state.newY}</h1>
+        {activeApps}
       </div>
     );
   }

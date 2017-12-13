@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
+
 import './AlarmClock.css';
 
 
-class AlarmClock extends Component {
+class ActiveApp extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -23,15 +24,13 @@ class AlarmClock extends Component {
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "bottom")} className="createdDivBottomPanel"></div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "right")} className="createdDivRightPanel"></div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "left")} className="createdDivLeftPanel"></div>
-          <h1>I am an alarm clock</h1>
-          <h1>I am an alarm clock</h1>
-          <h1>I am an alarm clock</h1>
-          <h1>I am an alarm clock</h1>
-          <h1>I am an alarm clock</h1>
+          <div className="innerAppAppWrapper">
+            {/*{appType}*/}
+          </div>
         </div>
     );
   }
 }
 
 
-export default AlarmClock;
+export default ActiveApp;
