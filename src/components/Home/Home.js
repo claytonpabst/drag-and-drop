@@ -113,23 +113,23 @@ class Home extends Component {
     let elementIndex = this.state.elementIndex;
     let xMovement = newX - oldX;
     let yMovement = newY - oldY;
-    let height = this.state.testStyle[elementIndex].height.split('px')[0]
-    let width = this.state.testStyle[elementIndex].width.split('px')[0]
-    let left = this.state.testStyle[elementIndex].left.split('px')[0]
-    let style = this.state.testStyle
+    let height = this.state.activeApps[elementIndex].style.height.split('px')[0]
+    let width = this.state.activeApps[elementIndex].style.width.split('px')[0]
+    let left = this.state.activeApps[elementIndex].style.left.split('px')[0]
+    let apps = this.state.activeApps
     switch(this.state.expandSide){
       case "bottom":
-        style[elementIndex].height = JSON.stringify((parseInt(height, 10) + yMovement)) + "px";
-        this.setState({testStyle:style, oldX:newX, oldY:newY})
+        apps[elementIndex].style.height = JSON.stringify((parseInt(height, 10) + yMovement)) + "px";
+        this.setState({activeApps:apps, oldX:newX, oldY:newY})
         break;
       case "right":
-        style[elementIndex].width = JSON.stringify((parseInt(width, 10) + xMovement)) + "px";
-        this.setState({testStyle:style, oldX:newX, oldY:newY})
+        apps[elementIndex].style.width = JSON.stringify((parseInt(width, 10) + xMovement)) + "px";
+        this.setState({activeApps:apps, oldX:newX, oldY:newY})
         break;
       case "left":
-        style[elementIndex].width = JSON.stringify((parseInt(width, 10) - xMovement)) + "px";
-        style[elementIndex].left = JSON.stringify((parseInt(left, 10) + xMovement)) + "px";
-        this.setState({testStyle:style, oldX:newX, oldY:newY})
+        apps[elementIndex].style.width = JSON.stringify((parseInt(width, 10) - xMovement)) + "px";
+        apps[elementIndex].style.left = JSON.stringify((parseInt(left, 10) + xMovement)) + "px";
+        this.setState({activeApps:apps, oldX:newX, oldY:newY})
         break;
       default:
         break;
@@ -138,14 +138,14 @@ class Home extends Component {
 
   updateLocation(){
     let newState = this.state;
-    let top = newState.testStyle[this.state.elementIndex].top;
-    let left = newState.testStyle[this.state.elementIndex].left;
-    let style = newState.testStyle;
+    let top = newState.activeApps[this.state.elementIndex].style.top;
+    let left = newState.activeApps[this.state.elementIndex].style.left;
+    let apps = newState.activeApps;
     let xMovement = this.state.newX - this.state.oldX;
     let yMovement = this.state.newY - this.state.oldY;
-    style[this.state.elementIndex].left = JSON.stringify((parseInt(left, 10) + xMovement)) + "px";
-    style[this.state.elementIndex].top = JSON.stringify((parseInt(top, 10) + yMovement)) + "px";
-    this.setState({testStyle:style, oldX:this.state.newX, oldY:this.state.newY})
+    apps[this.state.elementIndex].style.left = JSON.stringify((parseInt(left, 10) + xMovement)) + "px";
+    apps[this.state.elementIndex].style.top = JSON.stringify((parseInt(top, 10) + yMovement)) + "px";
+    this.setState({activeApps:apps, oldX:this.state.newX, oldY:this.state.newY})
   }
 
   resetMoveActive(){
@@ -158,15 +158,15 @@ class Home extends Component {
   }
 
   bringToFront(el){
-    let newStyle = this.state.testStyle;
-    let numberOfElements = newStyle.length;
-    newStyle[el].zIndex = JSON.stringify(numberOfElements);
-    for(let i=0; i<newStyle.length; i++){
-      if(newStyle[i].zIndex > 0){
-        newStyle[i].zIndex--;
+    let apps = this.state.activeApps;
+    let numberOfElements = apps.length;
+    apps[el].style.zIndex = JSON.stringify(numberOfElements);
+    for(let i=0; i<apps.length; i++){
+      if(apps[i].style.zIndex > 0){
+        apps[i].style.zIndex--;
       };
     };
-    this.setState({testStyle:newStyle});
+    this.setState({activeApps:apps});
   }
 
   render() {
@@ -174,7 +174,7 @@ class Home extends Component {
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
-        <div onMouseDown={() => this.bringToFront(0)} style={{...this.state.testStyle[0]}} className="createdDiv">
+        {/*<div onMouseDown={() => this.bringToFront(0)} style={{...this.state.testStyle[0]}} className="createdDiv">
           <div onMouseDown={(e) => this.moveTheDiv(e, 0)} className="createdDivTopPanel"></div>
           <div onMouseDown={(e) => this.markXY(e, 0, "bottom")} className="createdDivBottomPanel"></div>
           <div onMouseDown={(e) => this.markXY(e, 0, "right")} className="createdDivRightPanel"></div>
@@ -191,12 +191,12 @@ class Home extends Component {
           <div onMouseDown={(e) => this.markXY(e, 2, "bottom")} className="createdDivBottomPanel"></div>
           <div onMouseDown={(e) => this.markXY(e, 2, "right")} className="createdDivRightPanel"></div>
           <div onMouseDown={(e) => this.markXY(e, 2, "left")} className="createdDivLeftPanel"></div>
-        </div>
-        <AlarmClock style={this.state.testStyle[3]} 
+        </div>*/}
+        <AlarmClock style={this.state.activeApps[0].style} 
                     bringToFront={this.bringToFront}
                     moveTheDiv={this.moveTheDiv}
                     markXY={this.markXY}
-                    elementIndex={3}
+                    elementIndex={0}
                     app={"Alarm Clock"}
         />
         <h1>{this.state.oldX} {this.state.oldY}</h1>

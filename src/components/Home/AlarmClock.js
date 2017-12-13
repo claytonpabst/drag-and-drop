@@ -18,11 +18,11 @@ class AlarmClock extends Component {
   render() {
 
     return (
-        <div onMouseDown={() => this.props.bringToFront(3)} style={{...this.props.style}} className="createdDiv">
-          <div onMouseDown={(e) => this.props.moveTheDiv(e, 3)} className="createdDivTopPanel"></div>
-          <div onMouseDown={(e) => this.props.markXY(e, 3, "bottom")} className="createdDivBottomPanel"></div>
-          <div onMouseDown={(e) => this.props.markXY(e, 3, "right")} className="createdDivRightPanel"></div>
-          <div onMouseDown={(e) => this.props.markXY(e, 3, "left")} className="createdDivLeftPanel"></div>
+        <div onMouseDown={() => this.props.bringToFront(this.props.elementIndex)} style={{...this.props.style}} className="createdDiv">
+          <div onMouseDown={(e) => this.props.moveTheDiv(e, this.props.elementIndex)} className="createdDivTopPanel"></div>
+          <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "bottom")} className="createdDivBottomPanel"></div>
+          <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "right")} className="createdDivRightPanel"></div>
+          <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "left")} className="createdDivLeftPanel"></div>
           <h1>I am an alarm clock</h1>
           <h1>I am an alarm clock</h1>
           <h1>I am an alarm clock</h1>
