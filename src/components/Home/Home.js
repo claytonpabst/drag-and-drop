@@ -96,16 +96,16 @@ class Home extends Component {
     let style = this.state.testStyle
     switch(this.state.expandSide){
       case "bottom":
-        style[elementIndex].height = JSON.stringify((parseInt(height) + yMovement)) + "px";
+        style[elementIndex].height = JSON.stringify((parseInt(height, radix) + yMovement)) + "px";
         this.setState({testStyle:style, oldX:newX, oldY:newY})
         break;
       case "right":
-        style[elementIndex].width = JSON.stringify((parseInt(width) + xMovement)) + "px";
+        style[elementIndex].width = JSON.stringify((parseInt(width, radix) + xMovement)) + "px";
         this.setState({testStyle:style, oldX:newX, oldY:newY})
         break;
       case "left":
-        style[elementIndex].width = JSON.stringify((parseInt(width) - xMovement)) + "px";
-        style[elementIndex].left = JSON.stringify((parseInt(left) + xMovement)) + "px";
+        style[elementIndex].width = JSON.stringify((parseInt(width, radix) - xMovement)) + "px";
+        style[elementIndex].left = JSON.stringify((parseInt(left, radix) + xMovement)) + "px";
         this.setState({testStyle:style, oldX:newX, oldY:newY})
         break;
       default:
@@ -120,8 +120,8 @@ class Home extends Component {
     let style = newState.testStyle;
     let xMovement = this.state.newX - this.state.oldX;
     let yMovement = this.state.newY - this.state.oldY;
-    style[this.state.elementIndex].left = JSON.stringify((parseInt(left) + xMovement)) + "px";
-    style[this.state.elementIndex].top = JSON.stringify((parseInt(top) + yMovement)) + "px";
+    style[this.state.elementIndex].left = JSON.stringify((parseInt(left, radix) + xMovement)) + "px";
+    style[this.state.elementIndex].top = JSON.stringify((parseInt(top, radix) + yMovement)) + "px";
     this.setState({testStyle:style, oldX:this.state.newX, oldY:this.state.newY})
   }
 

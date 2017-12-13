@@ -9,6 +9,7 @@
 .createdDiv{
     position: absolute;
     overflow: hidden;
+    border: 1px solid #777;
 }
 .createdDivTopPanel{
     height: 20px;
@@ -23,7 +24,7 @@
     bottom:0px;
     height: 2px;
     width:100%;
-    background: #999;
+    background: #bbb;
 }
 .createdDivBottomPanel:hover{
     cursor: ns-resize;
@@ -33,7 +34,7 @@
     right:0px;
     height:100%;
     width:2px;
-    background: #999;
+    background: #bbb;
 }
 .createdDivRightPanel:hover{
     cursor: ew-resize;
@@ -43,7 +44,7 @@
     left:0px;
     height:100%;
     width:2px;
-    background: #999;
+    background: #bbb;
 }
 .createdDivLeftPanel:hover{
     cursor: ew-resize;
