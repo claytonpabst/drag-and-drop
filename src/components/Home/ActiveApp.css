@@ -1,7 +1,4 @@
-.createdDivInnerApp{
+.activeAppAppWrapper{
   width:100%;
-  min-height: 100%;
-  background: pink;
-  overflow: hidden;
-  position: relative;
+  height: 100%;
 }

@@ -49,5 +49,19 @@
 .createdDivLeftPanel:hover{
     cursor: ew-resize;
 }
+.addAnAppButton{
+    background: #999;
+    margin: 20px;
+    /*height: 40px;*/
+    width: fit-content;
+    padding: 20px;
+}
+.addAnAppButton:hover{
+    cursor: pointer;
+}
+.availableAppsDropDown{
+    width: 200px;
+    transition: all .5s;
+}
 
 

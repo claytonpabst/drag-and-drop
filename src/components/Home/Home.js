@@ -12,9 +12,9 @@ class Home extends Component {
         {
           appType:"Alarm Clock",
           style:{
-            height:"100px",
-            width:"50px",
-            background:"black",
+            height:"700px",
+            width:"250px",
+            background:"#ddd",
             left:"200px",
             top:"100px",
             zIndex:"1"
@@ -25,14 +25,14 @@ class Home extends Component {
           style:{
             height:"200px",
             width:"500px",
-            background:"white",
+            background:"#333",
             left:"600px",
             top:"300px",
             zIndex:"1"
           }
         },
         {
-          appType:"Calander",
+          appType:"Calendar",
           style:{
             height:"200px",
             width:"500px",
@@ -50,7 +50,10 @@ class Home extends Component {
       elementIndex:null,
       moveActive:false,
       expandActive:false,
-      expandSide:null
+      expandSide:null,
+      availableAppsDropDownStyle:{
+        height:"500px"
+      }
 
     }
     //bind shit here
@@ -162,7 +165,7 @@ class Home extends Component {
     if (this.state.activeApps.length) {
       activeApps = this.state.activeApps.map((app, i) => {
         return (
-          <ActiveApp style={this.state.activeApps[i].style} 
+          <ActiveApp  style={this.state.activeApps[i].style} 
                       bringToFront={this.bringToFront}
                       moveTheDiv={this.moveTheDiv}
                       markXY={this.markXY}
@@ -175,6 +178,9 @@ class Home extends Component {
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
+        <h1 className="addAnAppButton">App++</h1>
+        <div className="availableAppsDropDown" style={this.state.availableAppsDropDownStyle}></div>
+
         {activeApps}
       </div>
     );
