@@ -21,8 +21,8 @@ class ActiveApp extends Component {
     let x = !this.state.minimized;
     let style = val === '-'?this.props.minimizedStyle:this.props.style;
     if(val === '-'){
-      let minimizedPosition = (this.props.numberOfAppsMinimized*100)+100;
-      minimizedPosition = minimizedPosition.toString() + "px";
+      let minimizedPosition = ((this.props.elementIndex*100)+100).toString() + "px";
+      // minimizedPosition = minimizedPosition.toString() + "px";
       style.left = minimizedPosition;
     }
     style.transition="all .5s";
@@ -35,10 +35,10 @@ class ActiveApp extends Component {
     let style = val === '-'?this.props.minimizedStyle:this.props.style;
     let newNumberOfAppsMinimized = this.props.numberOfAppsMinimized - 1;
     if(val === '-'){
-      let minimizedPosition = (this.props.numberOfAppsMinimized*100)+100;
-      minimizedPosition = minimizedPosition.toString() + "px";
+      let minimizedPosition = ((this.props.elementIndex*100)+100).toString() + "px";
+      // minimizedPosition = minimizedPosition.toString() + "px";
       style.left = minimizedPosition;
-      newNumberOfAppsMinimized = this.props.numberOfAppsMinimized + 1;
+      // newNumberOfAppsMinimized = this.props.numberOfAppsMinimized + 1;
     }
     style.transition="all 0s";
     this.setState({style:style})

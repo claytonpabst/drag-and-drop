@@ -59,8 +59,7 @@ class Home extends Component {
       moveActive:false,
       expandActive:false,
       expandSide:null,
-      showCreateAppDropDown:false,
-      numberOfAppsMinimized:0
+      showCreateAppDropDown:false
 
     }
     //bind shit here
@@ -71,7 +70,6 @@ class Home extends Component {
     this.updateHeight = this.updateHeight.bind(this);
     this.bringToFront = this.bringToFront.bind(this);
     this.createNewApp = this.createNewApp.bind(this);
-    this.updateNumberOfAppsMinimized = this.updateNumberOfAppsMinimized.bind(this);
   }
 
   markXY(e, el, side){
@@ -198,10 +196,6 @@ class Home extends Component {
     this.setState({activeApps:activeApps});
   }
 
-  updateNumberOfAppsMinimized(val){
-    this.setState({numberOfAppsMinimized:val})
-  }
-
   render() {
     let activeApps;
     if (this.state.activeApps.length) {
@@ -215,7 +209,6 @@ class Home extends Component {
                       elementIndex={i}
                       appType={this.state.activeApps[i].appType}
                       numberOfAppsMinimized={this.state.numberOfAppsMinimized}
-                      updateNumberOfAppsMinimized={this.updateNumberOfAppsMinimized}
           />
         )
       })
