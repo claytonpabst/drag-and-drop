@@ -42,7 +42,6 @@ class ActiveApp extends Component {
     }
     style.transition="all 0s";
     this.setState({style:style})
-    this.props.updateNumberOfAppsMinimized(newNumberOfAppsMinimized);
   }
 
   render() {
