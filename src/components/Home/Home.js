@@ -10,38 +10,46 @@ class Home extends Component {
     this.state = {
       activeApps:[
         {
-          appType:"Alarm Clock",
+          appType:"Note Pad",
           style:{
             height:"700px",
             width:"250px",
             background:"#ddd",
             left:"200px",
-            top:"100px",
-            zIndex:"1"
+            top:"200px",
+            zIndex:"1",
+          },
+          minimizedStyle:{
+            height:"20px",
+            width:"100px",
+            background:"#ddd",
+            left:"100px",
+            top:"0px",
+            zIndex:"1",
           }
         },
-        {
-          appType:"Note Pad",
-          style:{
-            height:"300px",
-            width:"400px",
-            background:"#333",
-            left:"600px",
-            top:"100px",
-            zIndex:"1"
-          }
-        },
-        {
-          appType:"Calendar",
-          style:{
-            height:"200px",
-            width:"500px",
-            background:"white",
-            left:"800px",
-            top:"500px",
-            zIndex:"1"
-          }
-        },
+        // {
+        //   appType:"Note Pad",
+        //   style:{
+        //     height:"300px",
+        //     width:"400px",
+        //     background:"#333",
+        //     left:"600px",
+        //     top:"100px",
+        //     zIndex:"1"
+        //   }
+        // },
+        // {
+        //   appType:"Calendar",
+        //   style:{
+        //     height:"200px",
+        //     width:"500px",
+        //     background:"white",
+        //     left:"800px",
+        //     top:"500px",
+        //     zIndex:"1"
+        //   }
+        // },
       ],
       oldX:null,
       oldY:null,
@@ -52,6 +60,7 @@ class Home extends Component {
       expandActive:false,
       expandSide:null,
       showCreateAppDropDown:false,
+      numberOfAppsMinimized:0
 
     }
     //bind shit here
@@ -62,6 +71,7 @@ class Home extends Component {
     this.updateHeight = this.updateHeight.bind(this);
     this.bringToFront = this.bringToFront.bind(this);
     this.createNewApp = this.createNewApp.bind(this);
+    this.updateNumberOfAppsMinimized = this.updateNumberOfAppsMinimized.bind(this);
   }
 
   markXY(e, el, side){
@@ -175,9 +185,21 @@ class Home extends Component {
         left:"800px",
         top:"500px",
         zIndex:"1"
+      },
+      minimizedStyle:{
+        height:"20px",
+        width:"100px",
+        background:"white",
+        left:"100px",
+        top:"0px",
+        zIndex:"1"
       }
     });
     this.setState({activeApps:activeApps});
+  }
+
+  updateNumberOfAppsMinimized(val){
+    this.setState({numberOfAppsMinimized:val})
   }
 
   render() {
@@ -185,12 +207,15 @@ class Home extends Component {
     if (this.state.activeApps.length) {
       activeApps = this.state.activeApps.map((app, i) => {
         return (
-          <ActiveApp  style={this.state.activeApps[i].style} 
+          <ActiveApp  style={this.state.activeApps[i].style}
+                      minimizedStyle={this.state.activeApps[i].minimizedStyle}
                       bringToFront={this.bringToFront}
                       moveTheDiv={this.moveTheDiv}
                       markXY={this.markXY}
                       elementIndex={i}
                       appType={this.state.activeApps[i].appType}
+                      numberOfAppsMinimized={this.state.numberOfAppsMinimized}
+                      updateNumberOfAppsMinimized={this.updateNumberOfAppsMinimized}
           />
         )
       })

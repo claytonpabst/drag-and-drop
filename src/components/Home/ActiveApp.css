@@ -6,6 +6,7 @@
     position: absolute;
     overflow: hidden;
     border: 1px solid #777;
+    /*transition: all .5s;*/
 }
 .createdDivTopPanel{
     height: 20px;
