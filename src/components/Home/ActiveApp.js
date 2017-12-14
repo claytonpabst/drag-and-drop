@@ -38,7 +38,13 @@ class ActiveApp extends Component {
     return (
         <div onMouseDown={() => this.props.bringToFront(this.props.elementIndex)} style={{...this.props.style}} className="createdDiv">
           <div onMouseDown={(e) => this.props.moveTheDiv(e, this.props.elementIndex)} className="createdDivTopPanel">
+            <ul>
+              <div style={{background:"red"}}>x</div>
+              <div style={{background:"#ffc405"}}>-</div>
+              <div style={{background:"green"}}>+</div>
+            </ul>
             <h1>{this.props.appType}</h1>
+            <span></span>
           </div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "bottom")} className="createdDivBottomPanel"></div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "right")} className="createdDivRightPanel"></div>

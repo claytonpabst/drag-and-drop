@@ -11,14 +11,41 @@
     height: 20px;
     width:100%;
     background: #bbb;
+    display: flex;
+    flex-direction: row;
 }
 .createdDivTopPanel h1{
   width: fit-content;
   margin: 0 auto;
   padding-top: 2px;
 }
+.createdDivTopPanel ul{
+  position: absolute;
+  left:5px;
+  /*background: blue;*/
+  width: 60px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+}
 .createdDivTopPanel div{
-  
+  border-radius: 50%;
+  font-size: 14px;
+  width: 16px;
+  height: 16px;
+  margin: 2px 2px;
+  text-align: center;
+}
+.createdDivTopPanel div:hover{
+  cursor: default;
+  border: 1px solid #ddd;
+}
+.createdDivTopPanel span{
+  position: absolute;
+  background: blue;
+  width: 30px;
+  height: 20px;
+  right: 0px;
 }
 .createdDivTopPanel:hover{
     cursor: move;
