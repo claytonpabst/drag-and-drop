@@ -65,7 +65,7 @@ class ActiveApp extends Component {
         <div onMouseDown={() => this.props.bringToFront(this.props.elementIndex)} style={{...this.state.style}} className="createdDiv">
           <div onMouseDown={(e) => this.props.moveTheDiv(e, this.props.elementIndex)} className="createdDivTopPanel">
             <ul>
-              <div style={{background:"red"}}>x</div>
+              <div onClick={() => this.props.deleteApp(this.props.elementIndex)} style={{background:"red"}}>x</div>
               <div onClick={() => this.toggleMinimized('-')} style={{background:"#ffc405"}}>-</div>
               <div onClick={() => this.toggleMinimized('+')} style={{background:"green"}}>+</div>
             </ul>

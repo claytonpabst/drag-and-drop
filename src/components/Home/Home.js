@@ -70,7 +70,9 @@ class Home extends Component {
     this.updateHeight = this.updateHeight.bind(this);
     this.bringToFront = this.bringToFront.bind(this);
     this.createNewApp = this.createNewApp.bind(this);
-    this.toggleAvailableAppsDropDown = this.toggleAvailableAppsDropDown.bind(this);
+    this.openAvailableAppsDropDown = this.openAvailableAppsDropDown.bind(this);
+    this.closeAvailableAppsDropDown = this.closeAvailableAppsDropDown.bind(this);
+    this.deleteApp = this.deleteApp.bind(this);
   }
 
   markXY(e, el, side){
@@ -168,15 +170,12 @@ class Home extends Component {
     this.setState({activeApps:apps});
   }
 
-  toggleAvailableAppsDropDown(action){
-    let x;
-    if(action === "open"){
-      document.getElementById("availableAppsDropDown").focus();
-      x = true;
-    } else {
-      x = false;
-    };
-    this.setState({showCreateAppDropDown:x});
+  openAvailableAppsDropDown(){
+    document.getElementById('availableAppsDropDown').focus();
+    this.setState({showCreateAppDropDown:true});
+  }
+  closeAvailableAppsDropDown(e){
+    this.setState({showCreateAppDropDown:false});
   }
 
   createNewApp(type){
@@ -202,6 +201,11 @@ class Home extends Component {
     });
     this.setState({activeApps:activeApps});
   }
+  deleteApp(index){
+    let activeApps = this.state.activeApps;
+    activeApps.splice(index, 1);
+    this.setState({activeApps:activeApps});
+  }
 
   render() {
     let activeApps;
@@ -216,6 +220,7 @@ class Home extends Component {
                       elementIndex={i}
                       appType={this.state.activeApps[i].appType}
                       numberOfAppsMinimized={this.state.numberOfAppsMinimized}
+                      deleteApp={this.deleteApp}
                       key={i}
           />
         )
@@ -225,8 +230,8 @@ class Home extends Component {
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
-        <h1 onClick={() => this.toggleAvailableAppsDropDown("open")} className="addAnAppButton">App++</h1>
-        <div onBlur={() => this.toggleAvailableAppsDropDown("close")} id="availableAppsDropDown" className="availableAppsDropDown" style={createAppDropDownStyle} tabIndex={0}>
+        <h1 onClick={this.openAvailableAppsDropDown} id="addAnAppButton" className="addAnAppButton" tabIndex={1}>App++</h1>
+        <div onBlur={this.closeAvailableAppsDropDown} id="availableAppsDropDown" className="availableAppsDropDown" style={createAppDropDownStyle} tabIndex={0}>
           <h1 onClick={() => this.createNewApp("Alarm Clock")}>New Alarm Clock</h1>
           <h1 onClick={() => this.createNewApp("Calendar")}>New Calendar</h1>
           <h1 onClick={() => this.createNewApp("Note Pad")}>New Note Pad</h1>
