@@ -6,49 +6,7 @@
     position: relative;
     overflow: hidden;
 }
-.createdDiv{
-    position: absolute;
-    overflow: hidden;
-    border: 1px solid #777;
-}
-.createdDivTopPanel{
-    height: 20px;
-    width:100%;
-    background: #bbb;
-}
-.createdDivTopPanel:hover{
-    cursor: move;
-}
-.createdDivBottomPanel{
-    position: absolute;
-    bottom:0px;
-    height: 2px;
-    width:100%;
-    background: #bbb;
-}
-.createdDivBottomPanel:hover{
-    cursor: ns-resize;
-}
-.createdDivRightPanel{
-    position: absolute;
-    right:0px;
-    height:100%;
-    width:2px;
-    background: #bbb;
-}
-.createdDivRightPanel:hover{
-    cursor: ew-resize;
-}
-.createdDivLeftPanel{
-    position: absolute;
-    left:0px;
-    height:100%;
-    width:2px;
-    background: #bbb;
-}
-.createdDivLeftPanel:hover{
-    cursor: ew-resize;
-}
+
 .addAnAppButton{
     background: #999;
     margin: 20px 0 0 20px;

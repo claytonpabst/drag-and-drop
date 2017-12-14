@@ -19,7 +19,7 @@ class NotePad extends Component {
 
     return (
         <div className="alarmClockWrapper">
-          <p>I am a note pad.</p>
+          <textarea className="notePadTextArea"></textarea>
         </div>
     );
   }

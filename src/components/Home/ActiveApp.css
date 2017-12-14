@@ -2,3 +2,54 @@
   width:100%;
   height: 100%;
 }
+.createdDiv{
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid #777;
+}
+.createdDivTopPanel{
+    height: 20px;
+    width:100%;
+    background: #bbb;
+}
+.createdDivTopPanel h1{
+  width: fit-content;
+  margin: 0 auto;
+  padding-top: 2px;
+}
+.createdDivTopPanel div{
+  
+}
+.createdDivTopPanel:hover{
+    cursor: move;
+}
+.createdDivBottomPanel{
+    position: absolute;
+    bottom:0px;
+    height: 2px;
+    width:100%;
+    background: #bbb;
+}
+.createdDivBottomPanel:hover{
+    cursor: ns-resize;
+}
+.createdDivRightPanel{
+    position: absolute;
+    right:0px;
+    height:100%;
+    width:2px;
+    background: #bbb;
+}
+.createdDivRightPanel:hover{
+    cursor: ew-resize;
+}
+.createdDivLeftPanel{
+    position: absolute;
+    left:0px;
+    height:100%;
+    width:2px;
+    background: #bbb;
+}
+.createdDivLeftPanel:hover{
+    cursor: ew-resize;
+}

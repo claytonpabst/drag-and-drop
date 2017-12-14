@@ -23,11 +23,11 @@ class Home extends Component {
         {
           appType:"Note Pad",
           style:{
-            height:"200px",
-            width:"500px",
+            height:"300px",
+            width:"400px",
             background:"#333",
             left:"600px",
-            top:"300px",
+            top:"100px",
             zIndex:"1"
           }
         },
