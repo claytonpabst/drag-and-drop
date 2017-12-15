@@ -20,7 +20,7 @@ class Home extends Component {
       showCreateAppDropDown:false
 
     }
-    //bind shit here
+    
     this.moveTheDiv = this.moveTheDiv.bind(this);
     this.releaseTheDiv = this.releaseTheDiv.bind(this);
     this.resetMoveActive = this.resetMoveActive.bind(this);

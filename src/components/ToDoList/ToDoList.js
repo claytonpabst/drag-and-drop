@@ -9,7 +9,7 @@ class Calendar extends Component {
     this.state = {
       
     }
-    //bind shit here
+    
 
   }
   
@@ -19,7 +19,12 @@ class Calendar extends Component {
 
     return (
         <div className="toDoListWrapper">
-          <p>I am a to do list.</p>
+          <div className="toDoHeader">
+            <h1>Catagory++</h1>
+          </div>
+          <div className="toDoCatagory">
+            
+          </div>
         </div>
     );
   }
