@@ -15,6 +15,7 @@ class AlarmClock extends Component {
     }
 
     this.setTime = this.setTime.bind(this);
+    this.addAlarm = this.addAlarm.bind(this);
   }
 
   componentDidMount() {
@@ -54,6 +55,10 @@ class AlarmClock extends Component {
     }, this.setTime);
   }
 
+  addAlarm(){
+    console.log('adding alarm');
+  }
+
   render() {
 
     return (
@@ -69,11 +74,17 @@ class AlarmClock extends Component {
         </div>
 
         <div className='alarm_controls'>
+
           <div className='alarm_military_switch'>
             <p>Time Setting:</p>
             <p>12 Hour</p><input type='radio' checked={this.state.notMilitary} onChange={() => this.switchMilitary(false)} />
             <p>24 Hour</p><input type='radio' checked={this.state.military} onChange={() => this.switchMilitary(true)} />
           </div>
+
+          <div className='alarm_set_time'>
+            <p className='add_alarm_text'>Add Alarm </p><p className='add_alarm_plus' onClick={this.addAlarm} >+</p>
+          </div>
+
         </div>
 
       </section>

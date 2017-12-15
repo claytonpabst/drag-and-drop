@@ -10,13 +10,11 @@
   position: absolute;
   left: calc(50% - 150px);
   top: 20px;
-  border: 1px solid blue;
 }
 
 .alarm_pic{
   width: 300px;
   height: auto;
-  border: 1px solid green;
 }
 
 .alarm_time{
@@ -30,6 +28,7 @@
   font-size: 40px;
   color: rgb(4, 16, 133);
   text-align: center;
+  padding-top: 2px;
 }
 
 .alarm_controls{
@@ -47,4 +46,37 @@
   display: flex;
   justify-content: space-between;
   padding-bottom: 5px;
+}
+
+.alarm_set_time{
+  width: 100%;
+  position: relative;
+}
+
+.add_alarm_text{
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  font-size: 24px;
+  text-align: center;
+  margin-left: 50px;
+  position: relative;
+  top: -5px;
+}
+
+.add_alarm_plus{
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  border: 1px solid black;
+  background: #bbb;
+  box-shadow: 1px 1px 2px black;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add_alarm_plus:active{
+  box-shadow: inset 1px 1px 2px black;
 }
