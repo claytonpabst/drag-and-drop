@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AlarmClock from './../AlarmClock/AlarmClock.js';
 import NotePad from './NotePad.js';
 import Calendar from './Calendar.js';
+import Stopwatch from './../Stopwatch/Stopwatch.js';
 
 import './ActiveApp.css';
 
@@ -55,6 +56,9 @@ class ActiveApp extends Component {
         break;
       case "Note Pad":
         appType = <NotePad/>
+        break;
+      case "Stopwatch":
+        appType = <Stopwatch/>
         break;
       case "None":
         appType = <h1>I shouldn't exist</h1>
