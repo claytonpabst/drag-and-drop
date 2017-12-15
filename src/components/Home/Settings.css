@@ -5,6 +5,9 @@
   width: 100%;
   transition: all .5s;
 }
+.settingsWrapper input:hover{
+  cursor: pointer;
+}
 .settingsWrapper button{
   padding: 5px;
 }

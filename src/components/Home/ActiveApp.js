@@ -96,7 +96,7 @@ class ActiveApp extends Component {
     }
     let settings =  <div style={{...this.state.settingsStyle}} className="settingsWrapper">
                       <h1>Set background color:</h1>
-                      <input onChange={this.updateBackgroundColorInput} type="text"/>
+                      <input onChange={this.updateBackgroundColorInput} type="color"/>
                       <br/>
                       <br/>
                       <button onClick={this.applySettingsChanges}>Apply Changes</button>
