@@ -1,0 +1,10 @@
+.settingsWrapper{
+  position: absolute;
+  z-index: 10;
+  overflow: hidden;
+  width: 100%;
+  transition: all .5s;
+}
+.settingsWrapper button{
+  padding: 5px;
+}

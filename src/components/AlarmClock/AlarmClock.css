@@ -1,7 +1,8 @@
 .alarmClockWrapper{
   margin-left: 1%;
   widows: 98px;
-  height:98%;
+  /*position: absolute;*/
+  /*height:98%;*/
 }
 
 .alarmClockWrapper p, .alarmClockWrapper div{

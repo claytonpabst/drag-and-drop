@@ -213,7 +213,6 @@ class Home extends Component {
                         markXY={this.markXY}
                         elementIndex={i}
                         appType={this.state.activeApps[i].appType}
-                        numberOfAppsMinimized={this.state.numberOfAppsMinimized}
                         deleteApp={this.setTransition_shrinkApp_thenDelete}
                         key={i}
             />

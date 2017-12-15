@@ -6,7 +6,7 @@ import ToDoList from './../ToDoList/ToDoList.js';
 import Stopwatch from './../Stopwatch/Stopwatch.js';
 
 import './ActiveApp.css';
-
+import './Settings.css';
 
 class ActiveApp extends Component {
   constructor(props){
@@ -14,18 +14,22 @@ class ActiveApp extends Component {
     this.state = {
       minimized:false,
       style:this.props.style,
-      showSettings:false
+      settingsStyle:{height:"0%",background:"#eee"},
+      backgroundColorInput: ''
     }
+
     this.toggleMinimized = this.toggleMinimized.bind(this);
     this.removeTransition = this.removeTransition.bind(this);
     this.toggleSettings = this.toggleSettings.bind(this);
+    this.updateBackgroundColorInput = this.updateBackgroundColorInput.bind(this);
+    this.applySettingsChanges = this.applySettingsChanges.bind(this);
   }
   
   toggleMinimized(val){
     let x = !this.state.minimized;
     let style = val === '-'?this.props.minimizedStyle:this.props.style;
     if(val === '-'){
-      let minimizedPosition = ((this.props.elementIndex*100)+100).toString() + "px";
+      let minimizedPosition = ((this.props.elementIndex*100)+130).toString() + "px";
       style.left = minimizedPosition;
     }
     style.transition="all .5s";
@@ -36,17 +40,36 @@ class ActiveApp extends Component {
   
   removeTransition(val){
     let style = val === '-'?this.props.minimizedStyle:this.props.style;
-    let newNumberOfAppsMinimized = this.props.numberOfAppsMinimized - 1;
     if(val === '-'){
-      let minimizedPosition = ((this.props.elementIndex*100)+100).toString() + "px";
+      let minimizedPosition = ((this.props.elementIndex*100)+130).toString() + "px";
       style.left = minimizedPosition;
     }
     style.transition="all 0s";
     this.setState({style:style})
   }
+
   toggleSettings(){
-    let x = !this.state.showSettings;
-    this.setState({showSettings:x})
+    let x = this.state.settingsStyle;
+    if(this.state.settingsStyle.height === "0%"){
+      x.height = "100%";
+    } else {
+      x.height = "0%";
+    }
+    this.setState({settingsHeight:x})
+  }
+
+  updateBackgroundColorInput(e){
+    this.setState({backgroundColorInput:e.target.value})
+  }
+
+  applySettingsChanges(){
+    let background = this.state.backgroundColorInput;
+    let settingsStyle = this.state.settingsStyle;
+    let style = this.state.style;
+    settingsStyle.background = background;
+    settingsStyle.height = "0%";
+    style.background = background;
+    this.setState({settingsStyle, style});
   }
 
   render() {
@@ -71,8 +94,14 @@ class ActiveApp extends Component {
         appType = <p>No available app to load.</p>
         break;
     }
-    let settings = <h1>I am the settings.</h1>
-    // let style = this.state.minimized?this.props.minimizedStyle:this.props.style
+    let settings =  <div style={{...this.state.settingsStyle}} className="settingsWrapper">
+                      <h1>Set background color:</h1>
+                      <input onChange={this.updateBackgroundColorInput} type="text"/>
+                      <br/>
+                      <br/>
+                      <button onClick={this.applySettingsChanges}>Apply Changes</button>
+                    </div>
+
     return (
         <div onMouseDown={() => this.props.bringToFront(this.props.elementIndex)} style={{...this.state.style}} className="createdDiv">
           <div onMouseDown={(e) => this.props.moveTheDiv(e, this.props.elementIndex)} className="createdDivTopPanel">
@@ -90,12 +119,12 @@ class ActiveApp extends Component {
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "right")} className="createdDivRightPanel"></div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "left")} className="createdDivLeftPanel"></div>
           <div className="activeAppAppWrapper">
-            {this.state.showSettings?settings:appType}
+            {appType}
+            {settings}
           </div>
         </div>
     );
   }
 }
-
 
 export default ActiveApp;
