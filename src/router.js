@@ -3,7 +3,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import Home from './components/Home/Home.js';
-import Stopwatch from './components/Stopwatch/Stopwatch.js';
+import Stopwatch from './components/AlarmClock/AlarmClock.js';
 
 
 export default (
