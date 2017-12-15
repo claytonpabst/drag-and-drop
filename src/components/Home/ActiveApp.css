@@ -1,7 +1,6 @@
 .activeAppAppWrapper{
   position: relative;
   margin-left: 1%;
-  padding: 5px;
   width: 98%;
   height: 98%;
   border: 1px solid #999;
@@ -12,6 +11,7 @@
     overflow: hidden;
     border: 1px solid #777;
     box-shadow: -1px 13px 53px 1px rgba(0,0,0,0.23);
+    border-radius: 1%;
 }
 .createdDivTopPanel{
     height: 20px;

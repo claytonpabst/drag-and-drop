@@ -13,10 +13,12 @@ class ActiveApp extends Component {
     super(props)
     this.state = {
       minimized:false,
-      style:this.props.style
+      style:this.props.style,
+      showSettings:false
     }
     this.toggleMinimized = this.toggleMinimized.bind(this);
     this.removeTransition = this.removeTransition.bind(this);
+    this.toggleSettings = this.toggleSettings.bind(this);
   }
   
   toggleMinimized(val){
@@ -42,6 +44,10 @@ class ActiveApp extends Component {
     style.transition="all 0s";
     this.setState({style:style})
   }
+  toggleSettings(){
+    let x = !this.state.showSettings;
+    this.setState({showSettings:x})
+  }
 
   render() {
     let appType;
@@ -65,6 +71,7 @@ class ActiveApp extends Component {
         appType = <p>No available app to load.</p>
         break;
     }
+    let settings = <h1>I am the settings.</h1>
     // let style = this.state.minimized?this.props.minimizedStyle:this.props.style
     return (
         <div onMouseDown={() => this.props.bringToFront(this.props.elementIndex)} style={{...this.state.style}} className="createdDiv">
@@ -76,14 +83,14 @@ class ActiveApp extends Component {
             </ul>
             <h1>{this.props.appType}</h1>
             <span>
-              <img src="http://freevector.co/wp-content/uploads/2013/08/4450-setting-tool1.png" alt=""/>
+              <img onClick={this.toggleSettings} src="http://freevector.co/wp-content/uploads/2013/08/4450-setting-tool1.png" alt=""/>
             </span>
           </div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "bottom")} className="createdDivBottomPanel"></div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "right")} className="createdDivRightPanel"></div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "left")} className="createdDivLeftPanel"></div>
           <div className="activeAppAppWrapper">
-            {appType}
+            {this.state.showSettings?settings:appType}
           </div>
         </div>
     );
