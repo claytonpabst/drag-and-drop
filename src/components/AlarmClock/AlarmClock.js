@@ -12,10 +12,13 @@ class AlarmClock extends Component {
       military: false,
       notMilitary: true,
       AM: true,
+      alarms: [],
     }
 
     this.setTime = this.setTime.bind(this);
     this.addAlarm = this.addAlarm.bind(this);
+    this.updateSingleAlarm = this.updateSingleAlarm.bind(this);
+    this.deleteSingleAlarm = this.deleteSingleAlarm.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +59,28 @@ class AlarmClock extends Component {
   }
 
   addAlarm(){
-    console.log('adding alarm');
+    let alarms = this.state.alarms.slice();
+    alarms.push({
+      name: '',
+      hours: '12',
+      minutes: '00'
+    })
+    this.setState({
+      alarms: alarms
+    })
+  }
+
+  updateSingleAlarm(e, i, key){
+    console.log(i, key);
+    let alarms = this.state.alarms.slice();
+    alarms[i][key] = e.target.value;
+    this.setState({alarms});
+  }
+
+  deleteSingleAlarm(i){
+    let alarms = this.state.alarms.slice();
+    alarms.splice(i, 1);
+    this.setState({alarms});
   }
 
   render() {
@@ -81,9 +105,22 @@ class AlarmClock extends Component {
             <p>24 Hour</p><input type='radio' checked={this.state.military} onChange={() => this.switchMilitary(true)} />
           </div>
 
-          <div className='alarm_set_time'>
+          <div className='alarm_add_new'>
             <p className='add_alarm_text'>Add Alarm </p><p className='add_alarm_plus' onClick={this.addAlarm} >+</p>
           </div>
+
+          <ul className='alarms'>
+            {
+              this.state.alarms.map( (item, i) => {
+                return  <li className='alarm_item' key={i} >
+                          <input value={item.name} onChange={(e) => this.updateSingleAlarm(e, i, 'name')} placeholder='Alarm Name' className='alarms_names' />
+                          <input value={item.hours} onChange={(e) => this.updateSingleAlarm(e, i, 'hours')} placeholder='12' className='alarms_time_box' />:
+                          <input value={item.minutes} onChange={(e) => this.updateSingleAlarm(e, i, 'minutes')} placeholder='00' className='alarms_time_box' />
+                          <div onClick={() => this.deleteSingleAlarm(i)} className='alarm_delete'>X</div>
+                        </li>
+              })
+            }
+          </ul>
 
         </div>
 
