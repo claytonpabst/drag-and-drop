@@ -178,28 +178,16 @@ class Home extends Component {
     this.setState({showCreateAppDropDown:false});
   }
 
-  createNewApp(type){
+  createNewApp(type, h, w){
     let activeApps = this.state.activeApps;
+    let height = JSON.stringify(h) + "px";
+    let width = JSON.stringify(w) + "px";
     for(let i=0; i<activeApps.length; i++){
       if(activeApps[i].appType === "None"){
         activeApps[i]={
           appType:type,
-          style:{
-            height:"200px",
-            width:"500px",
-            background:"white",
-            left:"800px",
-            top:"500px",
-            zIndex:"1"
-          },
-          minimizedStyle:{
-            height:"20px",
-            width:"100px",
-            background:"white",
-            left:"100px",
-            top:"0px",
-            zIndex:"1"
-          }          
+          style:{height:height,width:width,background:"white",left:"1500px",top:"200px",zIndex:"1"},
+          minimizedStyle:{height:"20px",width:"100px",background:"white",left:"100px",top:"0px",zIndex:"1"}
         }
         this.setState({activeApps:activeApps});
         return;
@@ -207,25 +195,12 @@ class Home extends Component {
     }
     activeApps.push({
       appType:type,
-      style:{
-        height:"200px",
-        width:"500px",
-        background:"white",
-        left:"800px",
-        top:"500px",
-        zIndex:"1"
-      },
-      minimizedStyle:{
-        height:"20px",
-        width:"100px",
-        background:"white",
-        left:"100px",
-        top:"0px",
-        zIndex:"1"
-      }
+      style:{height:height,width:width,background:"white",left:"150px",top:"200px",zIndex:"1"},
+      minimizedStyle:{height:"20px",width:"100px",background:"white",left:"100px",top:"0px",zIndex:"1"}
     });
     this.setState({activeApps:activeApps});
   }
+
   deleteApp(index){
     let activeApps = this.state.activeApps;
     activeApps[index].appType="None";
@@ -265,6 +240,7 @@ class Home extends Component {
           <h1 onClick={() => this.createNewApp("Alarm Clock")}>New Alarm Clock</h1>
           <h1 onClick={() => this.createNewApp("Calendar")}>New Calendar</h1>
           <h1 onClick={() => this.createNewApp("Note Pad")}>New Note Pad</h1>
+          <h1 onClick={() => this.createNewApp("Stopwatch", 580, 300)}>Stopwatch</h1>
         </div>
         {activeApps}
       </div>
