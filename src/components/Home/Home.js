@@ -33,6 +33,8 @@ class Home extends Component {
     this.closeAvailableAppsDropDown2 = this.closeAvailableAppsDropDown2.bind(this);
     this.deleteApp = this.deleteApp.bind(this);
     this.setTransition_shrinkApp_thenDelete = this.setTransition_shrinkApp_thenDelete.bind(this);
+    this.expandAppWidthAndHeight = this.expandAppWidthAndHeight.bind(this);
+    this.setTransitionToZero = this.setTransitionToZero.bind(this);
   }
 
   markXY(e, el, side){
@@ -149,19 +151,34 @@ class Home extends Component {
       if(activeApps[i].appType === "None"){
         activeApps[i]={
           appType:type,
-          style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all 0s"},
-          minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all 0s"}
+          style:{height:"0px",width:"0px",background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all .5s"},
+          minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all .5s"}
         }
         this.setState({activeApps:activeApps, showCreateAppDropDown:false});
+        setTimeout(() => this.expandAppWidthAndHeight(width, height, i),100);
         return;
       }
     }
     activeApps.push({
       appType:type,
-      style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all 0s"},
-      minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all 0s"}
+      style:{height:"0px",width:"0px",background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all .5s"},
+      minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all .5s"}
     });
     this.setState({activeApps:activeApps, showCreateAppDropDown:false});
+    setTimeout(() => this.expandAppWidthAndHeight(width, height, activeApps.length-1),100);
+  }
+  expandAppWidthAndHeight(width, height, index){
+    let activeApps = this.state.activeApps;
+    activeApps[index].style.width = width;
+    activeApps[index].style.height = height;
+    this.setState({activeApps:activeApps});
+    setTimeout(() => this.setTransitionToZero(index),600);
+  }
+  setTransitionToZero(index){
+    let activeApps = this.state.activeApps;
+    activeApps[index].style.transition = "all 0s";
+    activeApps[index].minimizedStyle.transition = "all 0s";
+    this.setState({activeApps:activeApps});
   }
 
   setTransition_shrinkApp_thenDelete(index){
