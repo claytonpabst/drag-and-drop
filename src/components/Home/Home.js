@@ -32,6 +32,9 @@ class Home extends Component {
     this.closeAvailableAppsDropDown = this.closeAvailableAppsDropDown.bind(this);
     this.closeAvailableAppsDropDown2 = this.closeAvailableAppsDropDown2.bind(this);
     this.deleteApp = this.deleteApp.bind(this);
+    this.setTransition_shrinkApp_thenDelete = this.setTransition_shrinkApp_thenDelete.bind(this);
+    this.expandAppWidthAndHeight = this.expandAppWidthAndHeight.bind(this);
+    this.setTransitionToZero = this.setTransitionToZero.bind(this);
   }
 
   markXY(e, el, side){
@@ -148,21 +151,49 @@ class Home extends Component {
       if(activeApps[i].appType === "None"){
         activeApps[i]={
           appType:type,
-          style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1"},
-          minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1"}
+          style:{height:"0px",width:"0px",background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all .5s"},
+          minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all .5s"}
         }
         this.setState({activeApps:activeApps, showCreateAppDropDown:false});
+        setTimeout(() => this.expandAppWidthAndHeight(width, height, i),100);
         return;
       }
     }
     activeApps.push({
       appType:type,
-      style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1"},
-      minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1"}
+      style:{height:"0px",width:"0px",background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all .5s"},
+      minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all .5s"}
     });
     this.setState({activeApps:activeApps, showCreateAppDropDown:false});
+    setTimeout(() => this.expandAppWidthAndHeight(width, height, activeApps.length-1),100);
+  }
+  expandAppWidthAndHeight(width, height, index){
+    let activeApps = this.state.activeApps;
+    activeApps[index].style.width = width;
+    activeApps[index].style.height = height;
+    this.setState({activeApps:activeApps});
+    setTimeout(() => this.setTransitionToZero(index),600);
+  }
+  setTransitionToZero(index){
+    let activeApps = this.state.activeApps;
+    activeApps[index].style.transition = "all 0s";
+    activeApps[index].minimizedStyle.transition = "all 0s";
+    this.setState({activeApps:activeApps});
   }
 
+  setTransition_shrinkApp_thenDelete(index){
+    let activeApps = this.state.activeApps;
+    activeApps[index].style.transition="all .5s";
+    activeApps[index].minimizedStyle.transition="all .5s";
+    this.setState({activeApps:activeApps})
+    this.forceUpdate();
+    activeApps[index].style.height="0px";
+    activeApps[index].style.width="0px";
+    activeApps[index].minimizedStyle.height="0px";
+    activeApps[index].minimizedStyle.width="0px";
+    this.setState({activeApps:activeApps});
+    setTimeout(() => this.deleteApp(index),500);
+  }
   deleteApp(index){
     let activeApps = this.state.activeApps;
     activeApps[index].appType="None";
@@ -183,7 +214,7 @@ class Home extends Component {
                         elementIndex={i}
                         appType={this.state.activeApps[i].appType}
                         numberOfAppsMinimized={this.state.numberOfAppsMinimized}
-                        deleteApp={this.deleteApp}
+                        deleteApp={this.setTransition_shrinkApp_thenDelete}
                         key={i}
             />
           )
@@ -200,9 +231,9 @@ class Home extends Component {
         {addAnAppButton}
         <div onBlur={this.closeAvailableAppsDropDown} id="availableAppsDropDown" className="availableAppsDropDown" style={createAppDropDownStyle} tabIndex={0}>
           <h1 onClick={() => this.createNewApp("Alarm Clock", 250, 300)}>New Alarm Clock</h1>
-          <h1 onClick={() => this.createNewApp("Calendar", 250, 300)}>New Calendar</h1>
+          <h1 onClick={() => this.createNewApp("To Do List", 250, 300)}>New To Do List</h1>
           <h1 onClick={() => this.createNewApp("Note Pad", 320, 255)}>New Note Pad</h1>
-          <h1 onClick={() => this.createNewApp("Stopwatch", 300, 580)}>Stopwatch</h1>
+          <h1 onClick={() => this.createNewApp("Stopwatch", 300, 580)}>New Stopwatch</h1>
         </div>
         {activeApps}
       </div>
