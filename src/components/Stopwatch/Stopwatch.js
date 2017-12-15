@@ -129,7 +129,7 @@ class Stopwatch extends Component {
                         {this.state.lap1[3] < 10 ? '0' + this.state.lap1[3] : this.state.lap1[3]}
                     </div>
                     <div>
-                        Lap 1: {this.state.lap2[0] < 10 ? '0' + this.state.lap2[0] : this.state.lap2[0]}
+                        Lap 2: {this.state.lap2[0] < 10 ? '0' + this.state.lap2[0] : this.state.lap2[0]}
                         :
                         {this.state.lap2[1] < 10 ? '0' + this.state.lap2[1] : this.state.lap2[1]}
                         :
@@ -138,7 +138,7 @@ class Stopwatch extends Component {
                         {this.state.lap2[3] < 10 ? '0' + this.state.lap2[3] : this.state.lap2[3]}
                     </div>
                     <div>
-                        Lap 1: {this.state.lap3[0] < 10 ? '0' + this.state.lap3[0] : this.state.lap3[0]}
+                        Lap 3: {this.state.lap3[0] < 10 ? '0' + this.state.lap3[0] : this.state.lap3[0]}
                         :
                         {this.state.lap3[1] < 10 ? '0' + this.state.lap3[1] : this.state.lap3[1]}
                         :
@@ -147,7 +147,7 @@ class Stopwatch extends Component {
                         {this.state.lap3[3] < 10 ? '0' + this.state.lap3[3] : this.state.lap3[3]}
                     </div>
                     <div>
-                        Lap 1: {this.state.lap4[0] < 10 ? '0' + this.state.lap4[0] : this.state.lap4[0]}
+                        Lap 4: {this.state.lap4[0] < 10 ? '0' + this.state.lap4[0] : this.state.lap4[0]}
                         :
                         {this.state.lap4[1] < 10 ? '0' + this.state.lap4[1] : this.state.lap4[1]}
                         :
