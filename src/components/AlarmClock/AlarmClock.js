@@ -9,8 +9,8 @@ class AlarmClock extends Component {
     this.state = {
       hours: '',
       minutes: '',
-      military: true,
-      notMilitary: false,
+      military: false,
+      notMilitary: true,
       AM: true,
     }
 
@@ -64,14 +64,15 @@ class AlarmClock extends Component {
           <p className='alarm_time'>
             {this.state.hours < 10 ? '0' + this.state.hours : this.state.hours}:
               {this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes} 
-              {this.state.military ? '' : this.state.AM ? 'AM' : 'PM'}
+              <span style={{fontSize: '18px'}}>{this.state.military ? '' : this.state.AM ? 'AM' : 'PM'}</span>
           </p>
         </div>
 
         <div className='alarm_controls'>
           <div className='alarm_military_switch'>
-            <input type='radio' checked={this.state.military} onClick={() => this.switchMilitary(true)} />
-            <input type='radio' checked={this.state.notMilitary} onClick={() => this.switchMilitary(false)} />
+            <p>Time Setting:</p>
+            <p>12 Hour</p><input type='radio' checked={this.state.notMilitary} onChange={() => this.switchMilitary(false)} />
+            <p>24 Hour</p><input type='radio' checked={this.state.military} onChange={() => this.switchMilitary(true)} />
           </div>
         </div>
 

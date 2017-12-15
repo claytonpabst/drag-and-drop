@@ -6,11 +6,10 @@
 
 .alarm_clock{
   width: 300px;
-  height: 200px;
+  height: 160px;
   position: absolute;
   left: calc(50% - 150px);
-  top: calc(50% - 100px);
-  /* padding-left: 50px; */
+  top: 20px;
   border: 1px solid blue;
 }
 
@@ -31,4 +30,21 @@
   font-size: 40px;
   color: rgb(4, 16, 133);
   text-align: center;
+}
+
+.alarm_controls{
+  width: 300px;
+  height: auto;
+  position: absolute;
+  left: calc(50% - 150px);
+  top: 190px;
+  border: 1px solid red;
+}
+
+.alarm_military_switch{
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
 }
