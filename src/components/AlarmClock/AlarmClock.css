@@ -1,0 +1,125 @@
+.alarmClockWrapper{
+  width:100%;
+  min-height:100vh;
+  position: relative;
+}
+
+.alarmClockWrapper p, .alarmClockWrapper div{
+  user-select: none;
+}
+
+.alarm_clock{
+  width: 300px;
+  height: 160px;
+  position: absolute;
+  left: calc(50% - 150px);
+  top: 20px;
+}
+
+.alarm_pic{
+  width: 300px;
+  height: auto;
+}
+
+.alarm_time{
+  width: 179px;
+  height: 46px;
+  background: rgb(50, 50, 53);
+  position: absolute;
+  left: 60px;
+  top: 70px;
+  border-radius: 5px;
+  font-size: 40px;
+  color: rgb(4, 16, 133);
+  text-align: center;
+  padding-top: 2px;
+}
+
+.alarm_controls{
+  width: 300px;
+  height: auto;
+  position: absolute;
+  left: calc(50% - 150px);
+  top: 190px;
+}
+
+.alarm_military_switch{
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.alarm_add_new{
+  width: 100%;
+  position: relative;
+}
+
+.add_alarm_text{
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  font-size: 24px;
+  text-align: center;
+  margin-left: 50px;
+  position: relative;
+  top: -5px;
+}
+
+.add_alarm_plus{
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  border: 1px solid black;
+  background: #bbb;
+  box-shadow: 1px 1px 2px black;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add_alarm_plus:active{
+  box-shadow: inset 1px 1px 2px black;
+}
+
+.alarms{
+  width: 100%;
+  position: relative;
+}
+
+.alarm_item{
+  width: 100%;
+  position: relative;
+  margin-bottom: 5px;
+}
+
+.alarms_names{
+  width: 200px;
+  height: 20px;
+  font-size: 18px;
+  padding: 1px 2px 1px 2px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.alarms_time_box{
+  width: 26px;
+  height: 20px;
+  font-size: 18px;
+  padding: 1px 0px 0px 0px;
+  margin-right: 2px;
+  display: inline-block;
+}
+
+.alarm_delete{
+  color: red;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.alarm_delete:hover{
+  color: rgb(165, 0, 0);
+  font-size: 18px;
+}
