@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AlarmClock from './AlarmClock.js';
-import NotePad from './NotePad.js';
-import Calendar from './Calendar.js';
+import NotePad from './../NotePad/NotePad.js';
+import ToDoList from './../ToDoList/ToDoList.js';
 import Stopwatch from './../Stopwatch/Stopwatch.js';
 
 import './ActiveApp.css';
@@ -23,7 +23,6 @@ class ActiveApp extends Component {
     let style = val === '-'?this.props.minimizedStyle:this.props.style;
     if(val === '-'){
       let minimizedPosition = ((this.props.elementIndex*100)+100).toString() + "px";
-      // minimizedPosition = minimizedPosition.toString() + "px";
       style.left = minimizedPosition;
     }
     style.transition="all .5s";
@@ -37,9 +36,7 @@ class ActiveApp extends Component {
     let newNumberOfAppsMinimized = this.props.numberOfAppsMinimized - 1;
     if(val === '-'){
       let minimizedPosition = ((this.props.elementIndex*100)+100).toString() + "px";
-      // minimizedPosition = minimizedPosition.toString() + "px";
       style.left = minimizedPosition;
-      // newNumberOfAppsMinimized = this.props.numberOfAppsMinimized + 1;
     }
     style.transition="all 0s";
     this.setState({style:style})
@@ -51,8 +48,8 @@ class ActiveApp extends Component {
       case "Alarm Clock":
         appType = <AlarmClock/>
         break;
-      case "Calendar":
-        appType = <Calendar/>
+      case "To Do List":
+        appType = <ToDoList/>
         break;
       case "Note Pad":
         appType = <NotePad/>
