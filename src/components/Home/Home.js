@@ -148,8 +148,8 @@ class Home extends Component {
       if(activeApps[i].appType === "None"){
         activeApps[i]={
           appType:type,
-          style:{height:height,width:width,background:"white",left:"150px",top:"200px",zIndex:"1"},
-          minimizedStyle:{height:"20px",width:"100px",background:"white",left:"100px",top:"0px",zIndex:"1"}
+          style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1"},
+          minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1"}
         }
         this.setState({activeApps:activeApps, showCreateAppDropDown:false});
         return;
@@ -157,8 +157,8 @@ class Home extends Component {
     }
     activeApps.push({
       appType:type,
-      style:{height:height,width:width,background:"white",left:"150px",top:"200px",zIndex:"1"},
-      minimizedStyle:{height:"20px",width:"100px",background:"white",left:"100px",top:"0px",zIndex:"1"}
+      style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1"},
+      minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1"}
     });
     this.setState({activeApps:activeApps, showCreateAppDropDown:false});
   }
