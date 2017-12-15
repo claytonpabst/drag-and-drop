@@ -21,7 +21,15 @@ class AlarmClock extends Component {
     this.setTime();
   }
 
+  componentWillUnmount(){
+    clearInterval(this.alarmTime);
+  }
+
   setTime(){
+    if (this.alarmTime){
+      clearInterval(this.alarmTime)
+    }
+
     let today = new Date();
     let hours = today.getHours();
     let minutes = today.getMinutes();
@@ -33,10 +41,17 @@ class AlarmClock extends Component {
     }
 
     this.setState({ hours, minutes, AM }, () => {
-      setInterval(() => {
+      this.alarmTime = setInterval(() => {
         this.setTime();
       }, 60000)
     })
+  }
+
+  switchMilitary(isMilitary){
+    this.setState({
+      military: isMilitary,
+      notMilitary: !isMilitary,
+    }, this.setTime);
   }
 
   render() {
@@ -55,8 +70,8 @@ class AlarmClock extends Component {
 
         <div className='alarm_controls'>
           <div className='alarm_military_switch'>
-            <input type='radio' checked={this.state.military} onClick={() => this.setState({military: true, notMilitary: false})} />
-            <input type='radio' checked={this.state.notMilitary} onClick={() => this.setState({military: false, notMilitary: true})} />
+            <input type='radio' checked={this.state.military} onClick={() => this.switchMilitary(true)} />
+            <input type='radio' checked={this.state.notMilitary} onClick={() => this.switchMilitary(false)} />
           </div>
         </div>
 
