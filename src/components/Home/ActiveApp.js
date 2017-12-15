@@ -56,6 +56,9 @@ class ActiveApp extends Component {
       case "Note Pad":
         appType = <NotePad/>
         break;
+      case "None":
+        appType = <h1>I shouldn't exist</h1>
+        break;
       default:
         appType = <p>No available app to load.</p>
         break;

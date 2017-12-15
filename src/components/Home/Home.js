@@ -180,6 +180,31 @@ class Home extends Component {
 
   createNewApp(type){
     let activeApps = this.state.activeApps;
+    for(let i=0; i<activeApps.length; i++){
+      if(activeApps[i].appType === "None"){
+        activeApps[i]={
+          appType:type,
+          style:{
+            height:"200px",
+            width:"500px",
+            background:"white",
+            left:"800px",
+            top:"500px",
+            zIndex:"1"
+          },
+          minimizedStyle:{
+            height:"20px",
+            width:"100px",
+            background:"white",
+            left:"100px",
+            top:"0px",
+            zIndex:"1"
+          }          
+        }
+        this.setState({activeApps:activeApps});
+        return;
+      }
+    }
     activeApps.push({
       appType:type,
       style:{
@@ -203,7 +228,7 @@ class Home extends Component {
   }
   deleteApp(index){
     let activeApps = this.state.activeApps;
-    activeApps.splice(index, 1);
+    activeApps[index].appType="None";
     this.setState({activeApps:activeApps});
   }
 
@@ -211,26 +236,31 @@ class Home extends Component {
     let activeApps;
     if (this.state.activeApps.length) {
       activeApps = this.state.activeApps.map((app, i) => {
-        return (
-          <ActiveApp  style={this.state.activeApps[i].style}
-                      minimizedStyle={this.state.activeApps[i].minimizedStyle}
-                      bringToFront={this.bringToFront}
-                      moveTheDiv={this.moveTheDiv}
-                      markXY={this.markXY}
-                      elementIndex={i}
-                      appType={this.state.activeApps[i].appType}
-                      numberOfAppsMinimized={this.state.numberOfAppsMinimized}
-                      deleteApp={this.deleteApp}
-                      key={i}
-          />
-        )
+        if(this.state.activeApps[i].appType !== "None"){
+          return (
+            <ActiveApp  style={this.state.activeApps[i].style}
+                        minimizedStyle={this.state.activeApps[i].minimizedStyle}
+                        bringToFront={this.bringToFront}
+                        moveTheDiv={this.moveTheDiv}
+                        markXY={this.markXY}
+                        elementIndex={i}
+                        appType={this.state.activeApps[i].appType}
+                        numberOfAppsMinimized={this.state.numberOfAppsMinimized}
+                        deleteApp={this.deleteApp}
+                        key={i}
+            />
+          )
+        }
       })
     }
     let createAppDropDownStyle = this.state.showCreateAppDropDown?{height:"500px"}:{height:"0px",border:"none"};
+    let addAnAppButton =  this.state.showCreateAppDropDown
+                            ?<h1 onClick={this.closeAvailableAppsDropDown} className="addAnAppButton">App++</h1>
+                            :<h1 onClick={this.openAvailableAppsDropDown} className="addAnAppButton">App++</h1>;
 
     return (
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
-        <h1 onClick={this.openAvailableAppsDropDown} id="addAnAppButton" className="addAnAppButton" tabIndex={1}>App++</h1>
+        {addAnAppButton}
         <div onBlur={this.closeAvailableAppsDropDown} id="availableAppsDropDown" className="availableAppsDropDown" style={createAppDropDownStyle} tabIndex={0}>
           <h1 onClick={() => this.createNewApp("Alarm Clock")}>New Alarm Clock</h1>
           <h1 onClick={() => this.createNewApp("Calendar")}>New Calendar</h1>
