@@ -184,6 +184,10 @@ class Stopwatch extends Component {
             lap4: [0, 0, 0, 0],
             lapToCapture: 1,
         }
+        this.hours= 0,
+        this.minutes= 0,
+        this.seconds= 0,
+        this.hundredthSeconds= 0,
 
         this.startTimer = this.startTimer.bind(this);
         this.pauseTimer = this.pauseTimer.bind(this);
@@ -198,10 +202,10 @@ class Stopwatch extends Component {
             }, () => {
                this.timer = setInterval(() => {
                     if (this.state.stopwatchRunning){
-                        let hundredthSeconds = this.state.hundredthSeconds + 1;
-                        let seconds = this.state.seconds;
-                        let minutes = this.state.minutes;
-                        let hours = this.state.hours;
+                        let hundredthSeconds = this.hundredthSeconds + 1;
+                        let seconds = this.seconds;
+                        let minutes = this.minutes;
+                        let hours = this.hours;
 
                         if (hundredthSeconds >= 100){
                             hundredthSeconds = 0;
@@ -216,8 +220,12 @@ class Stopwatch extends Component {
                             hours ++;
                         }
 
-                        this.setState({ hundredthSeconds, seconds, minutes, hours });
+                        this.hundredthSeconds=hundredthSeconds;
+                        this.seconds=seconds;
+                        this.minutes=minutes;
+                        this.hours=hours;
                     }
+                    this.forceUpdate();
                 }, 10)
             })
         }
@@ -234,7 +242,7 @@ class Stopwatch extends Component {
         if (this.state.lapToCapture <= 4){
             let whatLap = 'lap' + this.state.lapToCapture
             this.setState({
-                [whatLap]: [this.state.hours, this.state.minutes, this.state.seconds, this.state.hundredthSeconds],
+                [whatLap]: [this.hours, this.minutes, this.seconds, this.hundredthSeconds],
                 lapToCapture: this.state.lapToCapture + 1
             }, () => {
                 console.log(this.state);
@@ -255,6 +263,10 @@ class Stopwatch extends Component {
             lap4: [0, 0, 0, 0],
             lapToCapture: 1,
         })
+        this.hours= 0;
+        this.minutes= 0;
+        this.seconds= 0;
+        this.hundredthSeconds= 0;
         clearInterval(this.timer);
     }
 
@@ -265,13 +277,13 @@ class Stopwatch extends Component {
                 <div className='stopwatch_box'>
                     <img src='http://www.sportcount.com/scwp_2017/wp-content/uploads/2017/09/face-sportcount-stopwatch.png' alt='stopwatch' />
                     <div className='stopwatch_screen'>
-                        {this.state.hours < 10 ? '0' + this.state.hours : this.state.hours}
+                        {this.hours < 10 ? '0' + this.hours : this.hours}
                         :
-                        {this.state.minutes < 10 ? '0' + this.state.minutes : this.state.minutes}
+                        {this.minutes < 10 ? '0' + this.minutes : this.minutes}
                         :
-                        {this.state.seconds < 10 ? '0' + this.state.seconds : this.state.seconds}
+                        {this.seconds < 10 ? '0' + this.seconds : this.seconds}
                         .
-                        {this.state.hundredthSeconds < 10 ? '0' + this.state.hundredthSeconds : this.state.hundredthSeconds}
+                        {this.hundredthSeconds < 10 ? '0' + this.hundredthSeconds : this.hundredthSeconds}
                     </div>
 
                     <div className='stopwatch_controls'>
