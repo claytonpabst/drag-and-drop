@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import AlarmClock from './AlarmClock/AlarmClock.js';
+import AlarmClock from './../AlarmClock/AlarmClock.js';
 import NotePad from './NotePad.js';
 import Calendar from './Calendar.js';
 
