@@ -1,8 +1,6 @@
 .stopwatch_container{
     width: 96%;
     margin-left: 2%;
-    position: relative;
-    overflow: hidden;
 }
 
 .stopwatch_box{
