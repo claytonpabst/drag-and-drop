@@ -18,7 +18,7 @@ class Calendar extends Component {
   render() {
 
     return (
-        <div className="alarmClockWrapper">
+        <div className="toDoListWrapper">
           <p>I am a to do list.</p>
         </div>
     );

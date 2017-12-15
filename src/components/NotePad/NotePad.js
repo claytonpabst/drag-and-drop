@@ -18,7 +18,7 @@ class NotePad extends Component {
   render() {
 
     return (
-        <div className="alarmClockWrapper">
+        <div className="notePadWrapper">
           <textarea className="notePadTextArea"></textarea>
         </div>
     );
