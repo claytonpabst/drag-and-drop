@@ -1,22 +1,23 @@
 .stopwatch_container{
-    width: 100%;
+    width: 96%;
+    margin-left: 2%;
     position: relative;
 }
 
 .stopwatch_box{
-    width: 300px;
+    width: 280px;
     height: 370px;
     overflow: hidden;
     position: absolute;
-    left: calc(50% - 150px);
+    left: calc(50% - 140px);
     top: 25px;
 }
 
 .stopwatch_box img{
-    width: 350px;
+    width: 340px;
     height: auto;
     position: absolute;
-    left: -25px;
+    left: -30px;
     top: -10px;
 }
 
@@ -38,7 +39,7 @@
     height: auto;
     position: absolute;
     bottom: 5px;
-    left: 25px;
+    left: 15px;
 }
 
 .stopwatch_btn{
