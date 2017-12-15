@@ -22,11 +22,11 @@
 }
 
 .stopwatch_screen{
-    width: 181px;
-    height: 74px;
+    width: 177px;
+    height: 72px;
     position: absolute;
-    left: 59px;
-    top: 128px;
+    left: 50px;
+    top: 124px;
     border-radius: 12px;
     background: rgb(170, 152, 126);
     font-size: 30px;
