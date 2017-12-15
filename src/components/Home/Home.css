@@ -25,6 +25,18 @@
     border: 1px solid black;
     overflow: hidden;
     outline: none;
+    z-index: 999;
+}
+.availableAppsDropDown h1{
+    text-align: center;
+    font-size: 18px;
+    margin: 5px 0;
+    padding: 5px 0;
+    transition: all .2s;
+}
+.availableAppsDropDown h1:hover{
+    background: #999;
+    cursor: pointer;
 }
 
 
