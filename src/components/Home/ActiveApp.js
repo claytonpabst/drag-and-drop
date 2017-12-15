@@ -74,7 +74,9 @@ class ActiveApp extends Component {
               <div onClick={() => this.toggleMinimized('+')} style={{background:"green"}}>+</div>
             </ul>
             <h1>{this.props.appType}</h1>
-            <span></span>
+            <span>
+              <img src="http://freevector.co/wp-content/uploads/2013/08/4450-setting-tool1.png" alt=""/>
+            </span>
           </div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "bottom")} className="createdDivBottomPanel"></div>
           <div onMouseDown={(e) => this.props.markXY(e, this.props.elementIndex, "right")} className="createdDivRightPanel"></div>

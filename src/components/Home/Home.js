@@ -32,6 +32,7 @@ class Home extends Component {
     this.closeAvailableAppsDropDown = this.closeAvailableAppsDropDown.bind(this);
     this.closeAvailableAppsDropDown2 = this.closeAvailableAppsDropDown2.bind(this);
     this.deleteApp = this.deleteApp.bind(this);
+    this.setTransition_shrinkApp_thenDelete = this.setTransition_shrinkApp_thenDelete.bind(this);
   }
 
   markXY(e, el, side){
@@ -148,8 +149,8 @@ class Home extends Component {
       if(activeApps[i].appType === "None"){
         activeApps[i]={
           appType:type,
-          style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1"},
-          minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1"}
+          style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all 0s"},
+          minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all 0s"}
         }
         this.setState({activeApps:activeApps, showCreateAppDropDown:false});
         return;
@@ -157,12 +158,25 @@ class Home extends Component {
     }
     activeApps.push({
       appType:type,
-      style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1"},
-      minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1"}
+      style:{height:height,width:width,background:"#eee",left:"150px",top:"200px",zIndex:"1",transition:"all 0s"},
+      minimizedStyle:{height:"20px",width:"100px",background:"#eee",left:"100px",top:"0px",zIndex:"1",transition:"all 0s"}
     });
     this.setState({activeApps:activeApps, showCreateAppDropDown:false});
   }
 
+  setTransition_shrinkApp_thenDelete(index){
+    let activeApps = this.state.activeApps;
+    activeApps[index].style.transition="all .5s";
+    activeApps[index].minimizedStyle.transition="all .5s";
+    this.setState({activeApps:activeApps})
+    this.forceUpdate();
+    activeApps[index].style.height="0px";
+    activeApps[index].style.width="0px";
+    activeApps[index].minimizedStyle.height="0px";
+    activeApps[index].minimizedStyle.width="0px";
+    this.setState({activeApps:activeApps});
+    setTimeout(() => this.deleteApp(index),500);
+  }
   deleteApp(index){
     let activeApps = this.state.activeApps;
     activeApps[index].appType="None";
@@ -183,7 +197,7 @@ class Home extends Component {
                         elementIndex={i}
                         appType={this.state.activeApps[i].appType}
                         numberOfAppsMinimized={this.state.numberOfAppsMinimized}
-                        deleteApp={this.deleteApp}
+                        deleteApp={this.setTransition_shrinkApp_thenDelete}
                         key={i}
             />
           )
