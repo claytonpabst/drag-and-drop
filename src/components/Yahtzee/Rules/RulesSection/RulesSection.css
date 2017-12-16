@@ -1,0 +1,49 @@
+
+.rules_section{
+    width: 100%;
+    position: relative;
+    margin: 15px 0px 15px 0px;
+    padding: 10px 10px 20px 10px;
+    background: #227771;
+}
+
+.close{
+    width: 32px;
+    height: 32px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #222;
+    font-size: 29px;
+    line-height: 30px;
+    cursor: pointer;
+    text-decoration: none;
+    animation: pulse 1.5s infinite;
+    -webkit-animation: pulse 1.5s infinite;
+}
+
+.close:hover{
+    color: #444;
+    animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+}
+
+.rules_section h1{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #ccc;
+    font-size: 21px;
+    text-decoration: underline;
+}
+
+.rules_section p{
+    line-height: 22px;
+}
+
+@keyframes pulse{
+    50%{
+        color: #333;
+        transform: scale(1.2)
+    }
+}

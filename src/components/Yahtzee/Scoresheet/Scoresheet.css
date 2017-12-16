@@ -1,0 +1,83 @@
+
+.scoresheet{
+    width: 250px;
+    height: 600px;
+    background: #eee;
+    display: inline-block;
+    margin-right: 100px;
+    padding: 10px 10px 15px 40px;
+    box-shadow: 4px 4px 8px black;
+    position: relative;
+}
+
+.pencil{
+    position: absolute;
+    right: -110px;
+    top: -20px;
+    transform: rotate(-20deg);
+    cursor: pointer;
+    transition: all 0.4s;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.pencil:hover{
+    transform: rotate(-14deg) scale(1.1);
+    top: 0px;
+}
+
+.scoresheet_scores{
+    width: 40px;
+    text-align: center;
+}
+
+.scoresheet h2{
+    margin: 10px 0px 10px 0px;
+}
+
+.scoresheet table{
+    margin-bottom: 20px;
+    margin-top: 3px;
+    text-align: left;
+    border: 1px solid black;
+    padding: 3px 3px 3px 3px;
+}
+
+.scoresheet tr{
+    border: 1px solid black;
+    padding: 5px 5px 5px 5px;
+    cursor: pointer;
+}
+
+.scoresheet tr:hover{
+    background: #ccc;
+}
+
+.scoresheet td{
+    border: 1px solid black;
+    padding: 4px 6px 4px 6px;
+}
+
+.total_div{
+     max-width: 150px; 
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 6px 0px 6px;
+}
+
+.total_div p{
+    padding: 0px 6px 0px 6px;
+    border-left: 1px solid black;
+}
+
+.totals:hover{
+    background: #ccc;
+    cursor: not-allowed;
+}

@@ -1,0 +1,81 @@
+
+.playing_area{
+    width: 600px;
+    height: 580px;
+    display: inline-block;
+    position: absolute;
+    top: 40px;
+    padding: 0;
+}
+
+.dice_holding_area{
+    width: 400px;
+    height: 80px;
+    position: absolute;
+    left: 90px;
+    display: flex;
+    justify-content: left;
+}
+
+.saved_die{
+    width: 100px;
+    height: 100px;
+    background: url('./../../../img/dice.png')center no-repeat;
+    transform: scale(0.7);
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    top: -17px;
+    margin-right: -30px;
+}
+
+.board{
+    width: 600px;
+    height: 500px;
+    /* background: #277714; */
+    border-radius: 5px;
+    position: absolute;
+    top: 80px;
+    box-shadow: inset 4px 4px 6px 6px #000;
+    padding: 100px 30px;
+}
+
+.single_die{
+    width: 100px;
+    height: 100px;
+    background: url('./../../../img/dice.png')center no-repeat;
+    transform: scale(0.8);
+    display: inline-block;
+    cursor: pointer;
+}
+
+.one{ 
+    background-position-x: -5px;
+    background-position-y: 0px;
+}
+
+.two{ 
+    background-position-x: -106px;
+    background-position-y: 0px;
+}
+
+.three{
+    background-position-x: -216px;
+    background-position-y: 0px;
+}
+
+.four{
+    background-position-x: -5px;
+    background-position-y: -125px;
+}
+
+.five{
+    background-position-x: -106px;
+    background-position-y: -125px;
+}
+
+.six{
+    background-position-x: -216px;
+    background-position-y: -125px;
+}
+
