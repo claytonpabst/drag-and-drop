@@ -20,7 +20,7 @@
 .saved_die{
     width: 100px;
     height: 100px;
-    background: url('./../../../img/dice.png')center no-repeat;
+    background: url('./../../../media/dice.png')center no-repeat;
     transform: scale(0.7);
     display: inline-block;
     cursor: pointer;
@@ -43,7 +43,7 @@
 .single_die{
     width: 100px;
     height: 100px;
-    background: url('./../../../img/dice.png')center no-repeat;
+    background: url('./../../../media/dice.png')center no-repeat;
     transform: scale(0.8);
     display: inline-block;
     cursor: pointer;

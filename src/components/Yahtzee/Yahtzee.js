@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
 import Scoresheet from './Scoresheet/Scoresheet.js';
 import Board from './Board/Board.js';
 import classicCup from './../../media/cup.png';
@@ -714,7 +713,6 @@ class Game extends Component {
           <h3>Game Over!</h3>
           <h4>Your Final Score: { this.state.grandTotal }</h4>
           <p>{ this.state.gameOverMessage }</p>
-          <Link to='/highscores' className='game_over_button'>See High Scores</Link>
         </div>
     }else{
       gameOverModal = null;
@@ -803,14 +801,6 @@ class Game extends Component {
         { gameOverModal }
         { highScores }
         { settingsModal }
-
-        {/* <Link className='link link_rules' 
-        to='/rules'
-        title='This will end your game'>Rules</Link>
-
-        <Link className='link link_high_scores' 
-        to='/highscores' 
-        title='This will end your game'>High Scores</Link> */}
 
         <button className='link settings'
         onClick={ this.toggleSettingsModal }

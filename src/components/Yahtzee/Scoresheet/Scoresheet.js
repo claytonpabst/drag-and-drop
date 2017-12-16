@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import pencil from './../../../img/pencil.png';
+import pencil from './../../../media/pencil.png';
 import './Scoresheet.css';
 
 
