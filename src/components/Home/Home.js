@@ -233,7 +233,7 @@ class Home extends Component {
           <h1 onClick={() => this.createNewApp("To Do List", 330, 500)}>New To Do List</h1>
           <h1 onClick={() => this.createNewApp("Note Pad", 320, 255)}>New Note Pad</h1>
           <h1 onClick={() => this.createNewApp("Stopwatch", 300, 580)}>New Stopwatch</h1>
-          <h1 onClick={() => this.createNewApp("Yahtzee", 1000, 750)}>New Yahtzee</h1>
+          <h1 onClick={() => this.createNewApp("Yahtzee", 800, 650)}>New Yahtzee</h1>
         </div>
         {activeApps}
       </div>

@@ -74,12 +74,16 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    axios.get('/api/highscores/classic')
-    .then( res => {
-      this.setState({
-        highScores: res.data
-      })
-    })
+    // document.addEventListener('click', () => {
+    //   let width = this.props.parentStyle.width;
+    //   let game = document.getElementById('game');
+    //   if (width < 800){
+    //     for (var i = 0; i < game.children.length; i++){
+    //       console.log(game.children[i])
+    //       document.getElementById('game').children[i].style.transform = 'scale(0.6)';
+    //     }
+    //   }
+    // });
   }
 
   getGrandTotal(){
@@ -793,7 +797,7 @@ class Game extends Component {
     let lowerTotal =  Number(threeKind)+Number(fourKind)+Number(fullhouse)+Number(smallStraight)+Number(largeStraight)+Number(yahtzee)+Number(chance);
 
     return (
-      <div className="game" style={background}>
+      <div className="game" id='game' style={background}>
 
         { howToPlay }
         { areYouSure }
@@ -823,6 +827,7 @@ class Game extends Component {
         chance={chance}
         lowerTotal={lowerTotal}
         selectScore={this.selectScore}
+        id='scoresheet'
         />
 
         <Board 
@@ -831,6 +836,7 @@ class Game extends Component {
         setDiceAside={ this.setDiceAside }
         returnDiceToTable={ this.returnDiceToTable }
         theme={ this.state.theme }
+        id='board'
         />
 
         <img id='cup' src={ cup } onClick={ this.rollDice } 
