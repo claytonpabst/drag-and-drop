@@ -1,7 +1,7 @@
 
 .playing_area{
-    width: 600px;
-    height: 580px;
+    width: 400px;
+    height: 450px;
     display: inline-block;
     position: absolute;
     top: 40px;
@@ -12,7 +12,6 @@
     width: 400px;
     height: 80px;
     position: absolute;
-    left: 90px;
     display: flex;
     justify-content: left;
 }
@@ -21,7 +20,7 @@
     width: 100px;
     height: 100px;
     background: url('./../../../media/dice.png')center no-repeat;
-    transform: scale(0.7);
+    transform: scale(0.5);
     display: inline-block;
     cursor: pointer;
     position: relative;
@@ -30,23 +29,24 @@
 }
 
 .board{
-    width: 600px;
-    height: 500px;
+    width: 380px;
+    height: 280px;
     /* background: #277714; */
     border-radius: 5px;
     position: absolute;
     top: 80px;
     box-shadow: inset 4px 4px 6px 6px #000;
-    padding: 100px 30px;
+    /*padding: 30px 30px;*/
 }
 
 .single_die{
     width: 100px;
     height: 100px;
     background: url('./../../../media/dice.png')center no-repeat;
-    transform: scale(0.8);
+    transform: scale(0.5);
     display: inline-block;
     cursor: pointer;
+    margin-right: -30px;
 }
 
 .one{ 
