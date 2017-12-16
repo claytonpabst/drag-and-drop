@@ -4,17 +4,20 @@
     height: 600px;
     background: #eee;
     display: inline-block;
-    margin-right: 100px;
+    margin-right: 5px;
+    margin-top: -15px;
+    margin-left: -10px;
     padding: 10px 10px 15px 40px;
     box-shadow: 4px 4px 8px black;
     position: relative;
+    transform: scale(.87);
 }
 
 .pencil{
     position: absolute;
-    right: -110px;
+    right: -70px;
     top: -20px;
-    transform: rotate(-20deg);
+    transform: rotate(-17deg) scale(.8);
     cursor: pointer;
     transition: all 0.4s;
     -webkit-touch-callout: none;
@@ -23,10 +26,11 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    z-index: 200;
 }
 
 .pencil:hover{
-    transform: rotate(-14deg) scale(1.1);
+    transform: rotate(-14deg) scale(.9);
     top: 0px;
 }
 

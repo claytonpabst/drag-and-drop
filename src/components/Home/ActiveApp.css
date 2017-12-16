@@ -1,7 +1,7 @@
 .activeAppAppWrapper{
   position: relative;
-  margin-left: 1%;
-  width: 98%;
+  /*margin-left: 1%;
+  width: 98%;*/
   height: 98%;
   border: 1px solid #999;
   overflow: hidden;

@@ -1,10 +1,10 @@
 
 .game{
     width: 100%;
-    min-height: 100vh;
+    height: 590px;
     position: relative;
     /* background: #663300; */
-    padding: 20px 20px 20px 100px;
+    padding: 20px 20px 20px 20px;
     overflow: hidden;
 }
 
@@ -180,6 +180,9 @@
 }
 
 #cup{
+    width: 500px;
+    /*border: 5px solid black;*/
+    left:300px;
     position: absolute;
     cursor: pointer;
     transition: all 1s;
@@ -195,22 +198,22 @@
     width: 500px;
     height: 36px;
     text-align: right;
-    font-size: 25px;
+    font-size: 23px;
     font-weight: bold;
     line-height: 30px;
     position: absolute;
-    top: 13px;
-    right: 200px;
+    top: 8px;
+    right: 150px;
     text-shadow: 1px 1px 1px #ddd;
 }
 
 @keyframes shakeClassicCup{
     50%{
-        transform: scale(0.4) rotate(80deg);
+        transform: scale(0.3) rotate(80deg);
         bottom: 75px;
     }
     100%{
-        transform: scale(0.4) rotate(80deg);
+        transform: scale(0.3) rotate(80deg);
         bottom: 50px;
     }
 }
