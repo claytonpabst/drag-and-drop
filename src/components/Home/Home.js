@@ -220,7 +220,7 @@ class Home extends Component {
         }
       })
     }
-    let createAppDropDownStyle = this.state.showCreateAppDropDown?{height:"145px"}:{height:"0px",border:"none"};
+    let createAppDropDownStyle = this.state.showCreateAppDropDown?{height:"170px"}:{height:"0px",border:"none"};
     let addAnAppButton =  this.state.showCreateAppDropDown
                             ?<h1 onClick={this.closeAvailableAppsDropDown} className="addAnAppButton">App++</h1>
                             :<h1 onClick={this.openAvailableAppsDropDown} className="addAnAppButton">App++</h1>;
@@ -233,6 +233,7 @@ class Home extends Component {
           <h1 onClick={() => this.createNewApp("To Do List", 330, 500)}>New To Do List</h1>
           <h1 onClick={() => this.createNewApp("Note Pad", 320, 255)}>New Note Pad</h1>
           <h1 onClick={() => this.createNewApp("Stopwatch", 300, 580)}>New Stopwatch</h1>
+          <h1 onClick={() => this.createNewApp("Yahtzee", 800, 650)}>New Yahtzee</h1>
         </div>
         {activeApps}
       </div>
