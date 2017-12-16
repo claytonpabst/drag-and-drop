@@ -17,7 +17,7 @@
     padding: 10px 10px 10px 10px;
     border-radius: 4px;
     box-shadow: 3px 3px 5px black;
-    position: fixed;
+    position: absolute;
     top: calc(50% - 140px);
     left: calc(50% - 150px);
     z-index: 160;
@@ -35,7 +35,7 @@
     width: 200px;
     height: 120px;
     background: #777;
-    position: fixed;
+    position: absolute;
     left: 48%;
     top: 40%;
     z-index: 5;
@@ -53,7 +53,7 @@
 .yahtzee_modal{
     width: 350px;
     height: 300px;
-    position: fixed;
+    position: absolute;
     left: calc(50% - 150px);
     top: calc(50% - 150px);
     border-radius: 4px;
@@ -71,7 +71,7 @@
     background: #ddd;
     color: #222;
     text-align: center;
-    position: fixed;
+    position: absolute;
     left: calc(50% - 200px);
     top: calc(50% - 100px);
     z-index: 120;
@@ -88,7 +88,7 @@
     background: #ddd;
     color: #222;
     text-align: left;
-    position: fixed;
+    position: absolute;
     left: calc(50% - 200px);
     top: calc(50% - 100px);
     z-index: 120;
@@ -106,7 +106,7 @@
     width: 200px;
     height: 120px;
     z-index: 120;
-    position: fixed;
+    position: absolute;
     left: calc(50% - 100px);
     top: calc(50% - 80px);
     background: #343;
@@ -198,7 +198,7 @@
     font-size: 25px;
     font-weight: bold;
     line-height: 30px;
-    position: fixed;
+    position: absolute;
     top: 13px;
     right: 200px;
     text-shadow: 1px 1px 1px #ddd;
