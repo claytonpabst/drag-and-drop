@@ -4,6 +4,7 @@ import AlarmClock from './../AlarmClock/AlarmClock.js';
 import NotePad from './../NotePad/NotePad.js';
 import ToDoList from './../ToDoList/ToDoList.js';
 import Stopwatch from './../Stopwatch/Stopwatch.js';
+import Yahtzee from './../Yahtzee/Yahtzee.js';
 
 import './ActiveApp.css';
 import './Settings.css';
@@ -86,6 +87,9 @@ class ActiveApp extends Component {
         break;
       case "Stopwatch":
         appType = <Stopwatch/>
+        break;
+      case "Yahtzee":
+        appType = <Yahtzee />
         break;
       case "None":
         appType = <h1>I shouldn't exist</h1>
