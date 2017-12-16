@@ -195,6 +195,10 @@ class Stopwatch extends Component {
         this.resetTimer = this.resetTimer.bind(this);
     }
 
+    componentWillUnmount(){
+        clearInterval(this.timer);
+    }
+
     startTimer() {
         if (!this.state.stopwatchRunning){
             this.setState({
