@@ -1,5 +1,52 @@
 .toDoListWrapper{
-    width: 98%;
-    margin-left: 1%;
-    position: relative;
+  width: 320px;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid black;
+  overflow: auto;
+}
+.toDoHeader{
+  /*width:100%;*/
+  background: #eee;
+  padding: 10px;
+}
+.toDoHeader h1{
+  width:fit-content;
+  margin: 0 auto;
+  font-size: 18px;
+  padding: 7px;
+  border: 1px solid #999;
+  transition: all .2s;
+  background: #888;
+}
+.toDoHeader h1:hover{
+  cursor: pointer;
+  background: #aaa;
+}
+.toDoCategory{
+  padding: 5px;
+  position: relative;
+}
+.toDoCategory div{
+  padding: 3px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: 1px solid black;
+  background: #888;
+}
+.toDoCategory div:hover{
+  cursor:pointer;
+  background: #aaa;
+}
+.toDoCategory h3{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 5px 2px 5px;
+}
+.toDoCategory h1{
+  padding: 2px;
+  margin-left: 10px;
+  border-bottom: 1px solid black;
 }

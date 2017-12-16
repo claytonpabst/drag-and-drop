@@ -20,7 +20,7 @@ class Home extends Component {
       showCreateAppDropDown:false
 
     }
-    //bind shit here
+    
     this.moveTheDiv = this.moveTheDiv.bind(this);
     this.releaseTheDiv = this.releaseTheDiv.bind(this);
     this.resetMoveActive = this.resetMoveActive.bind(this);
@@ -229,8 +229,8 @@ class Home extends Component {
       <div className="home" onMouseMove={this.releaseTheDiv} onMouseUp={this.resetMoveActive}>
         {addAnAppButton}
         <div onBlur={this.closeAvailableAppsDropDown} id="availableAppsDropDown" className="availableAppsDropDown" style={createAppDropDownStyle} tabIndex={0}>
-          <h1 onClick={() => this.createNewApp("Alarm Clock", 250, 300)}>New Alarm Clock</h1>
-          <h1 onClick={() => this.createNewApp("To Do List", 250, 300)}>New To Do List</h1>
+          <h1 onClick={() => this.createNewApp("Alarm Clock", 350, 450)}>New Alarm Clock</h1>
+          <h1 onClick={() => this.createNewApp("To Do List", 330, 500)}>New To Do List</h1>
           <h1 onClick={() => this.createNewApp("Note Pad", 320, 255)}>New Note Pad</h1>
           <h1 onClick={() => this.createNewApp("Stopwatch", 300, 580)}>New Stopwatch</h1>
         </div>
