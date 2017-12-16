@@ -24,3 +24,29 @@
   cursor: pointer;
   background: #aaa;
 }
+.toDoCategory{
+  padding: 5px;
+  position: relative;
+}
+.toDoCategory div{
+  padding: 3px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border: 1px solid black;
+  background: #888;
+}
+.toDoCategory div:hover{
+  cursor:pointer;
+  background: #aaa;
+}
+.toDoCategory h3{
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px 5px 2px 5px;
+}
+.toDoCategory h1{
+  padding: 2px;
+  margin-left: 10px;
+  border-bottom: 1px solid black;
+}
