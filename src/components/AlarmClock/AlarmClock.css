@@ -1,6 +1,8 @@
 .alarmClockWrapper{
   margin-left: 1%;
-  widows: 98px;
+  width: 98%;
+  height: 98%;
+  overflow: scroll;
   /*position: absolute;*/
   /*height:98%;*/
 }
