@@ -63,7 +63,8 @@ class AlarmClock extends Component {
     alarms.push({
       name: '',
       hours: '12',
-      minutes: '00'
+      minutes: '00',
+      am: true
     })
     this.setState({
       alarms: alarms
@@ -71,15 +72,42 @@ class AlarmClock extends Component {
   }
 
   updateSingleAlarm(e, i, key){
-    console.log(i, key);
-    let alarms = this.state.alarms.slice();
-    alarms[i][key] = e.target.value;
-    this.setState({alarms});
+    if (e.target.value.match(/^[0-9]*$/)){
+      let alarms = this.state.alarms.slice();
+      alarms[i][key] = e.target.value;
+      this.setState({alarms});
+    }else{
+      console.log('only digits are allowed');
+    }
   }
 
   deleteSingleAlarm(i){
     let alarms = this.state.alarms.slice();
     alarms.splice(i, 1);
+    this.setState({alarms});
+  }
+
+  validateTime(e, i, key){
+    let maxHours = this.state.military ? 24 : 12;
+    let max = {
+      hours: maxHours,
+      minutes: 59
+    }
+    let num = parseInt(e.target.value, 10);
+    if (num > max[key]){
+      num = max[key]
+    }
+    if (num < 0){
+      num = 0;
+    }
+    let alarms = this.state.alarms.slice();
+    alarms[i][key] = num.toString();
+    this.setState({alarms});
+  }
+
+  updateAlarmAmText(i){
+    let alarms = this.state.alarms.slice();
+    alarms[i].am = !alarms[i].am ;
     this.setState({alarms});
   }
 
@@ -114,8 +142,13 @@ class AlarmClock extends Component {
               this.state.alarms.map( (item, i) => {
                 return  <li className='alarm_item' key={i} >
                           <input value={item.name} onChange={(e) => this.updateSingleAlarm(e, i, 'name')} placeholder='Alarm Name' className='alarms_names' />
-                          <input value={item.hours} onChange={(e) => this.updateSingleAlarm(e, i, 'hours')} placeholder='12' className='alarms_time_box' />:
-                          <input value={item.minutes} onChange={(e) => this.updateSingleAlarm(e, i, 'minutes')} placeholder='00' className='alarms_time_box' />
+                          <input value={item.hours} onChange={(e) => this.updateSingleAlarm(e, i, 'hours')} placeholder='12' className='alarms_time_box' type='text' onBlur={(e) => this.validateTime(e, i, 'hours') } />:
+                          <input value={item.minutes} onChange={(e) => this.updateSingleAlarm(e, i, 'minutes')} placeholder='00' className='alarms_time_box' type='text' onBlur={(e) => this.validateTime(e, i, 'minutes') } />
+                          {
+                            this.state.notMilitary ?
+                              <div onClick={() => this.updateAlarmAmText(i)} className='alarm_am_btn'>{item.am ? 'AM' : 'PM'}</div>
+                            : null
+                          }
                           <div onClick={() => this.deleteSingleAlarm(i)} className='alarm_delete'>X</div>
                         </li>
               })
