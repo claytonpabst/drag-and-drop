@@ -134,9 +134,10 @@ class AlarmClock extends Component {
     if (num < 0){
       num = 0;
     }
+    num = num.toString().length < 2 ? '0' + num.toString() : num.toString();
 
     let alarms = this.state.alarms.slice();
-    alarms[i][key] = num.toString();
+    alarms[i][key] = num;
     this.setState({alarms});
   }
 
