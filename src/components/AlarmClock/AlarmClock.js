@@ -13,6 +13,7 @@ class AlarmClock extends Component {
       notMilitary: true,
       AM: true,
       alarms: [],
+      audioSrc: ''
     }
 
     this.alarmIsSounding = false;
@@ -146,14 +147,18 @@ class AlarmClock extends Component {
   }
 
   soundTheAlarm(i){
-    console.log('alarm #' + i + ' goes off');
     this.alarmIsSounding = true;
+    this.setState({
+      audioSrc: './media/Wake-up-sounds.mp3'
+    })
   }
 
   turnOffAlarm(){
     if (this.alarmIsSounding){
-      console.log('turn off alarm');
       this.alarmIsSounding = false;
+      this.setState({
+        audioSrc: ''
+      })
     }
   }
 
@@ -201,6 +206,8 @@ class AlarmClock extends Component {
           </ul>
 
         </div>
+
+        <audio src={ this.state.audioSrc } loop autoPlay />
 
       </section>
     );
