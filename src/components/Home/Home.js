@@ -3,7 +3,6 @@ import ActiveApp from './ActiveApp.js';
 
 import './Home.css';
 
-
 class Home extends Component {
   constructor(props){
     super(props)
@@ -20,7 +19,7 @@ class Home extends Component {
       showCreateAppDropDown:false
 
     }
-    
+
     this.moveTheDiv = this.moveTheDiv.bind(this);
     this.releaseTheDiv = this.releaseTheDiv.bind(this);
     this.resetMoveActive = this.resetMoveActive.bind(this);
