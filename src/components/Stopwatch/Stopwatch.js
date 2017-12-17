@@ -184,10 +184,10 @@ class Stopwatch extends Component {
             lap4: [0, 0, 0, 0],
             lapToCapture: 1,
         }
-        this.hours= 0,
-        this.minutes= 0,
-        this.seconds= 0,
-        this.hundredthSeconds= 0,
+        this.hours= 0;
+        this.minutes= 0;
+        this.seconds= 0;
+        this.hundredthSeconds= 0;
 
         this.startTimer = this.startTimer.bind(this);
         this.pauseTimer = this.pauseTimer.bind(this);

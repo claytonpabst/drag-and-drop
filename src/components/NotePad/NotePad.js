@@ -9,7 +9,6 @@ class NotePad extends Component {
     this.state = {
 
     }
-    //bind shit here
 
   }
   

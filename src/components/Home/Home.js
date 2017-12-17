@@ -3,7 +3,6 @@ import ActiveApp from './ActiveApp.js';
 
 import './Home.css';
 
-
 class Home extends Component {
   constructor(props){
     super(props)
@@ -20,7 +19,7 @@ class Home extends Component {
       showCreateAppDropDown:false
 
     }
-    
+
     this.moveTheDiv = this.moveTheDiv.bind(this);
     this.releaseTheDiv = this.releaseTheDiv.bind(this);
     this.resetMoveActive = this.resetMoveActive.bind(this);
@@ -133,10 +132,12 @@ class Home extends Component {
   }
 
   openAvailableAppsDropDown(){
+    console.log('open');
     document.getElementById('availableAppsDropDown').focus();
     this.setState({showCreateAppDropDown:true});
   }
   closeAvailableAppsDropDown(){
+    console.log('close')
     setTimeout(() => this.closeAvailableAppsDropDown2(),200);
   }
   closeAvailableAppsDropDown2(){
@@ -166,6 +167,7 @@ class Home extends Component {
     });
     this.setState({activeApps:activeApps, showCreateAppDropDown:false});
     setTimeout(() => this.expandAppWidthAndHeight(width, height, activeApps.length-1),100);
+    document.getElementById('availableAppsDropDown').blur();
   }
   expandAppWidthAndHeight(width, height, index){
     let activeApps = this.state.activeApps;
