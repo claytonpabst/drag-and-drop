@@ -10,7 +10,7 @@ class Calendar extends Component {
       categories:[
         {
           categoryName:'',
-          toDoItems:[''],
+          toDoItems:['Type Task Here','',''],
           style: {background:"#f17"},
         },
       ]
@@ -102,7 +102,6 @@ class Calendar extends Component {
         tasks.push( <h1 className="taskWrapper"  key={j}>
                       <input 
                         onChange={(e) => this.taskNameChange(e, i, j)}
-                        placeholder="New Task" 
                         className="taskInputs" 
                         style={this.state.categories[i].style}
                         value={this.state.categories[i].toDoItems[j]}
