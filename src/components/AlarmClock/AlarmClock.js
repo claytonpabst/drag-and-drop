@@ -13,7 +13,8 @@ class AlarmClock extends Component {
       notMilitary: true,
       AM: true,
       alarms: [],
-      audioSrc: ''
+      audioSrc: '',
+      background: '#fff'
     }
 
     this.alarmIsSounding = false;
@@ -161,7 +162,8 @@ class AlarmClock extends Component {
   soundTheAlarm(i){
     this.alarmIsSounding = true;
     this.setState({
-      audioSrc: './media/Wake-up-sounds.mp3'
+      audioSrc: './media/Wake-up-sounds.mp3',
+      background: '#f00'
     })
   }
 
@@ -169,14 +171,15 @@ class AlarmClock extends Component {
     if (this.alarmIsSounding){
       this.alarmIsSounding = false;
       this.setState({
-        audioSrc: ''
+        audioSrc: '',
+        background: '#fff'
       })
     }
   }
 
   render() {
     return (
-      <section className="alarmClockWrapper">
+      <section className="alarmClockWrapper" style={{background: this.state.background}}>
 
         <div className='alarm_clock' onClick={this.turnOffAlarm} >
           <img src='https://101clipart.com/wp-content/uploads/02/Digital%20Clock%20Clipart%2029.png' alt='alarm clock' className='alarm_pic' />
