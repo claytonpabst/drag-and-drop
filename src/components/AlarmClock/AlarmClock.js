@@ -75,12 +75,23 @@ class AlarmClock extends Component {
     let arr = JSON.parse(JSON.stringify(this.state.alarms));
 
     for (var i = 0; i < arr.length; i++){
-      if (isMilitary && !arr[i].am){
+      //if switching to miliary and we're in the pm, add 12 hours to the displayed time
+      if (isMilitary && !arr[i].am && arr[i].hours != 12){
         arr[i].hours = Number(arr[i].hours) + 12;
       }
+      //if switching to miliary and its 12:xx am, set hours to '00'
+      if (isMilitary && arr[i].am && arr[i].hours == 12){
+        arr[i].hours = '00';
+      }
+      //if switching to 12 hour clock and hours > 12, reduce hours by 12 and set am to false
       if (!isMilitary && arr[i].hours > 12){
         arr[i].hours = Number(arr[i].hours) - 12;
         arr[i].am = false;
+      }
+      //if switching to 12 hour clock and hours == '00', set am to true and set hours = 12
+      if (!isMilitary && arr[i].hours == '00'){
+        arr[i].hours = 12;
+        arr[i].am = true;
       }
     }
     
