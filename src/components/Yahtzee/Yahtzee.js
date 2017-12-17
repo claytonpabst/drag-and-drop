@@ -745,9 +745,9 @@ class Game extends Component {
         }
         cup = metalCup
         cupStyles = {
-          transform: 'scale(0.7)',
+          transform: 'scale(0.35)',
           right: '-10px',
-          bottom: '100px'
+          bottom: '20px'
         }
         break;
       case 'Flames':
@@ -757,9 +757,9 @@ class Game extends Component {
         }
         cup = flamesCup
         cupStyles = {
-          transform: 'scale(0.7)',
+          transform: 'scale(0.35)',
           right: '-20px',
-          bottom: '100px'
+          bottom: '20px'
         }
         break;
       default:
