@@ -214,6 +214,7 @@ class Home extends Component {
                         elementIndex={i}
                         appType={this.state.activeApps[i].appType}
                         deleteApp={this.setTransition_shrinkApp_thenDelete}
+                        uniqueID={i}
                         key={i}
             />
           )

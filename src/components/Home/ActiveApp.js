@@ -89,7 +89,7 @@ class ActiveApp extends Component {
         appType = <Stopwatch/>
         break;
       case "Yahtzee":
-        appType = <Yahtzee parentStyle={this.props.style} />
+        appType = <Yahtzee parentStyle={this.props.style} uniqueID={this.props.uniqueID} />
         break;
       case "None":
         appType = <h1>I shouldn't exist</h1>

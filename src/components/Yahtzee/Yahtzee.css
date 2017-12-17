@@ -179,9 +179,9 @@
     color: #ddd;
 }
 
-#cup{
+.cup{
     width: 500px;
-    /*border: 5px solid black;*/
+    border: 5px solid black;
     left:300px;
     position: absolute;
     cursor: pointer;

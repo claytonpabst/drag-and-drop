@@ -74,16 +74,7 @@ class Game extends Component {
   }
 
   componentDidMount(){
-    // document.addEventListener('click', () => {
-    //   let width = this.props.parentStyle.width;
-    //   let game = document.getElementById('game');
-    //   if (width < 800){
-    //     for (var i = 0; i < game.children.length; i++){
-    //       console.log(game.children[i])
-    //       document.getElementById('game').children[i].style.transform = 'scale(0.6)';
-    //     }
-    //   }
-    // });
+    console.log(this.props.uniqueID);
   }
 
   getGrandTotal(){
@@ -387,7 +378,7 @@ class Game extends Component {
     }
     if (this.state.rollNum <= 3){
       let { diceOnTable } = this.state;
-      let cup = document.getElementById('cup');
+      let cup = document.getElementById('cup' + this.props.uniqueID);
       cup.style.animation = 'rollDice 2s';
       setTimeout(function() {
         cup.style.animation = 'none'
@@ -596,7 +587,7 @@ class Game extends Component {
       // console.log('modal open')
       return;
     }
-    let cup = document.getElementById('cup');
+    let cup = document.getElementById('cup' + this.props.uniqueID);
     let {theme} = this.state 
     if (theme === 'Classic'){
       // console.log('classic shake')
@@ -616,7 +607,7 @@ class Game extends Component {
   }
 
   stopShakingCup(){
-    let cup = document.getElementById('cup');
+    let cup = document.getElementById('cup' + this.props.uniqueID);
     if (cup.style.animation !== 'rollDice 2s'){
       cup.style.animation = 'none'
     }
@@ -703,14 +694,10 @@ class Game extends Component {
     }
 
     let gameOverModal = null;
-    if (this.state.selectionsMade >= 13 && 
-      this.state.grandTotal > this.state.highScores[4].score
-    ){
+    if (this.state.selectionsMade >= 13){
       gameOverModal = <div className='game_over_modal'>
           <h4>Your Final Score: { this.state.grandTotal }</h4>
-          <p>That is one of the top 5 high scores! Please enter your name: </p>
-          <input onChange={ this.updateUsername } placeholder='Enter name here' value={ this.state.username } />
-          <button onClick={ this.updateHighScores } className='game_over_button'>Submit</button>
+          <button onClick={ this.newGame } className='game_over_button'>New Game</button>
         </div>
     }else if (this.state.selectionsMade >= 13){
       gameOverModal = <div className='game_over_modal'>
@@ -797,7 +784,7 @@ class Game extends Component {
     let lowerTotal =  Number(threeKind)+Number(fourKind)+Number(fullhouse)+Number(smallStraight)+Number(largeStraight)+Number(yahtzee)+Number(chance);
 
     return (
-      <div className="game" id='game' style={background}>
+      <div className="game" id={'game' + this.props.uniqueID} style={background}>
 
         { howToPlay }
         { areYouSure }
@@ -827,7 +814,7 @@ class Game extends Component {
         chance={chance}
         lowerTotal={lowerTotal}
         selectScore={this.selectScore}
-        id='scoresheet'
+        id={'scoresheet' + this.props.uniqueID}
         />
 
         <Board 
@@ -836,10 +823,10 @@ class Game extends Component {
         setDiceAside={ this.setDiceAside }
         returnDiceToTable={ this.returnDiceToTable }
         theme={ this.state.theme }
-        id='board'
+        id={'board' + this.props.uniqueID}
         />
 
-        <img id='cup' src={ cup } onClick={ this.rollDice } 
+        <img id={'cup' + this.props.uniqueID} className='cup' src={ cup } onClick={ this.rollDice } 
         alt='yahtzee dice cup' style={cupStyles}
         onMouseEnter={ this.shakeCup } onMouseLeave={ this.stopShakingCup } />
 
