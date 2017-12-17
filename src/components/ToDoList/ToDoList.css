@@ -98,3 +98,15 @@
   cursor: pointer;
   background: #ddd;
 }
+.deleteCategory{
+  position: absolute;
+  right: 67px;
+  padding: 3px;
+  border: 1px solid black;
+  background: black;
+  color: red;
+}
+.deleteCategory:hover{
+  cursor: pointer;
+  background: #333;
+}

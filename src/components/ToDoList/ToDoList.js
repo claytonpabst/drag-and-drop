@@ -18,6 +18,9 @@ class Calendar extends Component {
     
     this.addCategory = this.addCategory.bind(this);
     this.addTask = this.addTask.bind(this);
+    this.taskNameChange = this.taskNameChange.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
+    this.deleteCategory = this.deleteCategory.bind(this);
   }
   
   addCategory(){
@@ -50,6 +53,12 @@ class Calendar extends Component {
     categories[i].toDoItems.splice(j, 1);
     this.setState({categories});
   }
+  deleteCategory(i){
+    let categories = this.state.categories;
+    categories.splice(i, 1);
+    this.setState({categories});
+  }
+
   completeTask(i, j){
     let categories = this.state.categories;
     if(document.getElementsByClassName('toDoCategory')[i].getElementsByClassName('taskInputs')[j].style.textDecoration !== "line-through"){
@@ -105,6 +114,7 @@ class Calendar extends Component {
       return (
         <div key={i} style={this.state.categories[i].style} className="toDoCategory">
           <div onClick={() => this.addTask(i)}>Task++</div>
+          <span onClick={() => this.deleteCategory(i)} className="deleteCategory">Delete</span>
           <input  onChange={(e) => this.categoryNameChange(e, i)} 
                   placeholder="Category Name" 
                   className="categoryInputs" 
