@@ -15,9 +15,9 @@
 
 .pencil{
     position: absolute;
-    right: -70px;
+    right: -60px;
     top: -20px;
-    transform: rotate(-17deg) scale(.8);
+    transform: rotate(-7deg) scale(.7);
     cursor: pointer;
     transition: all 0.4s;
     -webkit-touch-callout: none;
@@ -30,8 +30,9 @@
 }
 
 .pencil:hover{
-    transform: rotate(-14deg) scale(.9);
+    transform: rotate(-3deg) scale(.8);
     top: 0px;
+    z-index: 170;
 }
 
 .scoresheet_scores{

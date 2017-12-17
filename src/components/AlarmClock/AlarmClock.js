@@ -13,12 +13,18 @@ class AlarmClock extends Component {
       notMilitary: true,
       AM: true,
       alarms: [],
+      audioSrc: '',
+      background: '#fff'
     }
+
+    this.alarmIsSounding = false;
 
     this.setTime = this.setTime.bind(this);
     this.addAlarm = this.addAlarm.bind(this);
     this.updateSingleAlarm = this.updateSingleAlarm.bind(this);
     this.deleteSingleAlarm = this.deleteSingleAlarm.bind(this);
+    this.soundTheAlarm = this.soundTheAlarm.bind(this);
+    this.turnOffAlarm = this.turnOffAlarm.bind(this);
   }
 
   componentDidMount() {
@@ -59,9 +65,7 @@ class AlarmClock extends Component {
         let alarmMinutes = Number(alarms[i].minutes);
 
         if (alarmHours === hours && alarmMinutes === minutes && (this.state.military || alarms[i].am === AM) ){
-          // setTimeout((i) => {
-            alert(`${alarms[i].name} alarm (alarm #${i+1}) goes off`)
-          // }, 5);
+          this.soundTheAlarm(i);
         }
       }
 
@@ -72,12 +76,23 @@ class AlarmClock extends Component {
     let arr = JSON.parse(JSON.stringify(this.state.alarms));
 
     for (var i = 0; i < arr.length; i++){
-      if (isMilitary && !arr[i].am){
+      //if switching to miliary and we're in the pm, add 12 hours to the displayed time
+      if (isMilitary && !arr[i].am && arr[i].hours != 12){
         arr[i].hours = Number(arr[i].hours) + 12;
       }
+      //if switching to miliary and its 12:xx am, set hours to '00'
+      if (isMilitary && arr[i].am && arr[i].hours == 12){
+        arr[i].hours = '00';
+      }
+      //if switching to 12 hour clock and hours > 12, reduce hours by 12 and set am to false
       if (!isMilitary && arr[i].hours > 12){
         arr[i].hours = Number(arr[i].hours) - 12;
         arr[i].am = false;
+      }
+      //if switching to 12 hour clock and hours == '00', set am to true and set hours = 12
+      if (!isMilitary && arr[i].hours == '00'){
+        arr[i].hours = 12;
+        arr[i].am = true;
       }
     }
     
@@ -131,9 +146,10 @@ class AlarmClock extends Component {
     if (num < 0){
       num = 0;
     }
+    num = num.toString().length < 2 ? '0' + num.toString() : num.toString();
 
     let alarms = this.state.alarms.slice();
-    alarms[i][key] = num.toString();
+    alarms[i][key] = num;
     this.setState({alarms});
   }
 
@@ -143,11 +159,29 @@ class AlarmClock extends Component {
     this.setState({alarms});
   }
 
+  soundTheAlarm(i){
+    this.alarmIsSounding = true;
+    this.setState({
+      audioSrc: './media/Wake-up-sounds.mp3',
+      background: '#f00'
+    })
+  }
+
+  turnOffAlarm(){
+    if (this.alarmIsSounding){
+      this.alarmIsSounding = false;
+      this.setState({
+        audioSrc: '',
+        background: '#fff'
+      })
+    }
+  }
+
   render() {
     return (
-      <section className="alarmClockWrapper">
+      <section className="alarmClockWrapper" style={{background: this.state.background}}>
 
-        <div className='alarm_clock'>
+        <div className='alarm_clock' onClick={this.turnOffAlarm} >
           <img src='https://101clipart.com/wp-content/uploads/02/Digital%20Clock%20Clipart%2029.png' alt='alarm clock' className='alarm_pic' />
           <p className='alarm_time'>
             {this.state.hours < 10 ? '0' + this.state.hours : this.state.hours}:
@@ -187,6 +221,8 @@ class AlarmClock extends Component {
           </ul>
 
         </div>
+
+        <audio src={ this.state.audioSrc } loop autoPlay />
 
       </section>
     );
