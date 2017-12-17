@@ -15,10 +15,14 @@ class AlarmClock extends Component {
       alarms: [],
     }
 
+    this.alarmIsSounding = false;
+
     this.setTime = this.setTime.bind(this);
     this.addAlarm = this.addAlarm.bind(this);
     this.updateSingleAlarm = this.updateSingleAlarm.bind(this);
     this.deleteSingleAlarm = this.deleteSingleAlarm.bind(this);
+    this.soundTheAlarm = this.soundTheAlarm.bind(this);
+    this.turnOffAlarm = this.turnOffAlarm.bind(this);
   }
 
   componentDidMount() {
@@ -52,8 +56,6 @@ class AlarmClock extends Component {
         this.setTime();
       }, (59 - seconds) * 1000)
 
-      this.forceUpdate();
-
       // Check if we have any alarms that need to go off right now
       let alarms = JSON.parse(JSON.stringify(this.state.alarms));
       for (let i = 0; i < alarms.length; i++){
@@ -61,12 +63,7 @@ class AlarmClock extends Component {
         let alarmMinutes = Number(alarms[i].minutes);
 
         if (alarmHours === hours && alarmMinutes === minutes && (this.state.military || alarms[i].am === AM) ){
-          // setTimeout((i) => {
-            alert(`${alarms[i].name} alarm (alarm #${i+1}) goes off`)
-            setTimeout((i) => {
-              console.log (i);
-            })
-          // }, 5);
+          this.soundTheAlarm(i);
         }
       }
 
@@ -148,11 +145,23 @@ class AlarmClock extends Component {
     this.setState({alarms});
   }
 
+  soundTheAlarm(i){
+    console.log('alarm #' + i + ' goes off');
+    this.alarmIsSounding = true;
+  }
+
+  turnOffAlarm(){
+    if (this.alarmIsSounding){
+      console.log('turn off alarm');
+      this.alarmIsSounding = false;
+    }
+  }
+
   render() {
     return (
       <section className="alarmClockWrapper">
 
-        <div className='alarm_clock'>
+        <div className='alarm_clock' onClick={this.turnOffAlarm} >
           <img src='https://101clipart.com/wp-content/uploads/02/Digital%20Clock%20Clipart%2029.png' alt='alarm clock' className='alarm_pic' />
           <p className='alarm_time'>
             {this.state.hours < 10 ? '0' + this.state.hours : this.state.hours}:
