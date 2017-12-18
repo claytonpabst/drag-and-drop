@@ -8,23 +8,23 @@ var config = require('./config.js');
 const app = module.exports = express();
 
 app.use(bodyParser.json());
-app.use(session({
-  secret: config.secret,
-    resave: true,
-    saveUninitialized: false,
-    cookie:{
-      maxAge: (1000*60*60*24*14) //this is 14 days
-    }
-}))
+// app.use(session({
+//   secret: config.secret,
+//     resave: true,
+//     saveUninitialized: false,
+//     cookie:{
+//       maxAge: (1000*60*60*24*14) //this is 14 days
+//     }
+// }))
 
-massive(config.connection)
-.then( db => {
-  app.set('db', db);
-})
+// massive(config.connection)
+// .then( db => {
+//   app.set('db', db);
+// })
 
 app.use(express.static(__dirname + './../build'))
 
-var userController = require("./userController.js");
+// var userController = require("./userController.js");
 
 //////////Endpoints for the front end
 
